@@ -1,0 +1,168 @@
+---
+title: "finalproject"
+output: html_document
+date: "2023-11-30"
+---
+```{r}
+library(tidyverse)
+```
+# Final Project (Population vs. Obesity by State)
+
+## Intro
+### Orignial Questions: 
+### 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
+
+
+### 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
+
+
+### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
+
+
+### 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size?
+
+
+## Data cleaning
+### Read in our data and clean population data for 2010-2019
+```{r}
+pop_2010_2019 <- read_delim("../Data/pop_2010_2019.csv")
+pop_2010_2019
+
+colnames(pop_2010_2019)[1] <- "geographic_area"
+colnames(pop_2010_2019)[2] <- "census"
+colnames(pop_2010_2019)[3] <- "est_base"
+colnames(pop_2010_2019)[4] <- "pop_est"
+colnames(pop_2010_2019)[9] <- 2015
+colnames(pop_2010_2019)[10] <- 2016
+colnames(pop_2010_2019)[11] <- 2017
+colnames(pop_2010_2019)[12] <- 2018
+colnames(pop_2010_2019)[13] <- 2019
+
+short_pop_10_19 <- subset(pop_2010_2019, select = c("geographic_area", "2015", "2016", "2017", "2018", "2019"))
+short_pop_10_19 <- short_pop_10_19[-c(1:3), ]
+short_pop_10_19 <- short_pop_10_19[-c(57:58), ]
+colnames(short_pop_10_19)[1] <- "area"
+
+```
+
+### Read in our data and clean population data for 2020-2022
+```{r}
+pop_2020_2022 <- read_delim("../Data/pop_2020_2022.csv")
+pop_2020_2022
+
+short_pop_20_22 <- subset(pop_2020_2022, select = c("NAME", "POPESTIMATE2020", "POPESTIMATE2021", "POPESTIMATE2022"))
+short_pop_20_22
+colnames(short_pop_20_22)[1] <- "area"
+colnames(short_pop_20_22)[2] <- 2020
+colnames(short_pop_20_22)[3] <- 2021
+colnames(short_pop_20_22)[4] <- 2022
+
+```
+
+### Merging population data
+```{r}
+mergedpop <- left_join(short_pop_10_19, short_pop_20_22)
+mergedInfo
+```
+
+### Read in our data and clean obesity data for 2015-2022
+```{r}
+obesity_data <- read_delim("../Data/National_Obesity_By_State.csv")
+obesity_data
+short_obesity_data <- subset(obesity_data, select = c("NAME", "Obesity", "Year"))
+short_obesity_data
+
+colnames(short_obesity_data)[1] <- "area"
+
+longObesity <- short_obesity_data%>%
+  pivot_wider(names_from = Year, values_from = Obesity)
+
+longObesity <- longObesity[-c(39), ]
+
+colnames(longObesity)[2] <- "ob_2015"
+colnames(longObesity)[3] <- "ob_2016"
+colnames(longObesity)[4] <- "ob_2017"
+colnames(longObesity)[5] <- "ob_2018"
+colnames(longObesity)[6] <- "ob_2019"
+colnames(longObesity)[7] <- "ob_2020"
+colnames(longObesity)[8] <- "ob_2021"
+colnames(longObesity)[9] <- "ob_2022"
+
+
+```
+
+### Merging population data and obesity data by state
+```{r}
+mergedObesityPop <- left_join(longObesity, mergedpop)
+mergedObesityPop
+```
+
+This is our dataset, population data from 2015-2022 and obesity percentages per state: **mergedObesityPop**. 
+
+## Questions & Data
+### 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
+```{r}
+
+```
+
+
+### 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
+```{r}
+max_ob_2015 <- max(mergedObesityPop$ob_2015, na.rm = TRUE)
+max_ob_2016 <- max(mergedObesityPop$ob_2016, na.rm = TRUE)
+max_ob_2017 <- max(mergedObesityPop$ob_2017, na.rm = TRUE)
+max_ob_2018 <- max(mergedObesityPop$ob_2018, na.rm = TRUE)
+max_ob_2019 <- max(mergedObesityPop$ob_2019, na.rm = TRUE)
+max_ob_2020 <- max(mergedObesityPop$ob_2020, na.rm = TRUE)
+max_ob_2021 <- max(mergedObesityPop$ob_2021, na.rm = TRUE)
+max_ob_2022 <- max(mergedObesityPop$ob_2022, na.rm = TRUE)
+max_ob_2015
+max_ob_2016 
+max_ob_2017 
+max_ob_2018 
+max_ob_2019 
+max_ob_2020
+max_ob_2021
+max_ob_2022 
+
+maxOb_state_2015 <- mergedObesityPop$area[mergedObesityPop$ob_2015 == max_ob_2015]
+maxOb_state_2016 <- mergedObesityPop$area[mergedObesityPop$ob_2016 == max_ob_2016]
+maxOb_state_2017 <- mergedObesityPop$area[mergedObesityPop$ob_2017 == max_ob_2017]
+maxOb_state_2018 <- mergedObesityPop$area[mergedObesityPop$ob_2018 == max_ob_2018]
+maxOb_state_2019 <- mergedObesityPop$area[mergedObesityPop$ob_2019 == max_ob_2019]
+maxOb_state_2020 <- mergedObesityPop$area[mergedObesityPop$ob_2020 == max_ob_2020]
+maxOb_state_2021 <- mergedObesityPop$area[mergedObesityPop$ob_2021 == max_ob_2021]
+maxOb_state_2022 <- mergedObesityPop$area[mergedObesityPop$ob_2022 == max_ob_2022]
+maxOb_state_2015 
+maxOb_state_2016 
+maxOb_state_2017 
+maxOb_state_2018
+maxOb_state_2019
+maxOb_state_2020
+maxOb_state_2021
+maxOb_state_2022 
+
+```
+
+Highest obesity percentage per year: 
+2015: Louisiana
+2016: West Virginia
+2017: West Virginia
+2018: West Virginia & Mississippi (tied)
+2019: Mississippi
+2020: Mississippi
+2021: West Virginia
+2022: West Virginia
+
+
+### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
+```{r}
+
+```
+
+
+### 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size?
+```{r}
+
+```
+
