@@ -27,8 +27,10 @@ library(tidyverse)
 
 ### Read in our data and clean population data for 2010-2019
 
+```{r}
 pop_2010_2019 <- read_delim("../Data/pop_2010_2019.csv")
 short_pop_10_19 <- subset(pop_2010_2019, select = c("Area", "2015", "2016", "2017", "2018", "2019"))
+```
 
 ### Read in our data and clean population data for 2020-2022
 
