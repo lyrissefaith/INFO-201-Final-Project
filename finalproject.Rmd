@@ -110,7 +110,7 @@ Highest obesity percentage per year:
 
 ## Graphs
 ```{r}
-ggplot(short_obesity_data, aes(Year, Obesity, col=area)) +
+ggplot(short_obesity_data, aes(Year, Obesity, col = Area)) +
   geom_line(linewidth = 0.5)+
   labs(x="Years", y="Obesity Percentage of State")
   
