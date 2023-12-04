@@ -158,10 +158,43 @@ Highest obesity percentage per year:
 
 
 ### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
+#### I'm not sure if this is right because when I do it in another way where I graph outliers, there are no outliers. But when I write the code in this way it shows two states that have outling results. The graph is a straight line slope though, so I don't know if it has no outliers? Might have to re-do after looking at question 2? 
+
 ```{r}
+# Changes in obesity rates for each state
+obesity_changes <- mergedObesityPop %>%
+  filter(type == "obesity") %>%
+  group_by(area) %>%
+  summarise(obesity_change = `2022` - `2015`)
 
+# Changes in population for each area 
+population_changes <- mergedObesityPop %>%
+  filter(type == "population") %>%
+  group_by(area) %>%
+  summarise(population_change = `2022` - `2015`)
+
+# Outliers in obesity rate changes
+obesity_outliers <- obesity_changes %>%
+  filter(abs(scale(obesity_change)) > 2)  
+
+# Merged the population changes with obesity outliers
+population_vs_obesity_outliers <- inner_join(population_changes, obesity_outliers, by = "area")
+print(population_vs_obesity_outliers)
 ```
+The states with significant outlier changes in obesity rates are District of Columbia and Minnesota. 
 
+District of Columbia had a decrease in population from 2015 to 2022. 
+The obesity change - 0.6 indicates a decrease in obesity rate. 
+Minnesota saw a big growth in population from 2015 to 2022 resulting in a big increase in obesity rate. 
+Increase in population often result in a increase in obesity rate. 
+
+```{r}
+ggplot(population_vs_obesity_outliers, aes(x = population_change, y = obesity_change)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Relationship between Population Change and Obesity Outliers", x = "Population Change", y = "Obesity Change")
+```
+The graph shows the relation of changes in state populations to chanages in obesity percentates over time. 
 
 ### 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size?
 ```{r}
