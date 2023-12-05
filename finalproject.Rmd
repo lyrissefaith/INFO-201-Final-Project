@@ -74,7 +74,7 @@ finalMerge <- left_join(popLong, short_obesity_data)
 This is our dataset, population data from 2015-2022 and obesity percentages per state: **mergedObesityPop**. 
 
 ## Questions & Data
-### 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
+## 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
 ```{r}
 #Highest and lowest obesity percentage per state
 
@@ -140,14 +140,14 @@ ggplot(df, aes(x = year, y = annual_change, color = state)) +
 This data shows that on average, as the years progress, Colorado has decreased their obesity levels by 0.67 and Louisiana continues to increase there obesity percentage by around 0.2.
 
 
-### 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
+## 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
 ```{r}
 
 
 ```
 
 
-### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
+## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
 #### I'm not sure if this is right because when I do it in another way where I graph outliers, there are no outliers. But when I write the code in this way it shows two states that have outling results. The graph is a straight line slope though, so I don't know if it has no outliers? Might have to re-do after looking at question 2? 
 
 ```{r}
@@ -187,7 +187,7 @@ ggplot(population_vs_obesity_outliers, aes(x = population_change, y = obesity_ch
 The graph shows the relation of changes in state populations to chanages in obesity percentates over time. 
 
 
-### 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size? Does the state with the highest obesity growth have the highest population growth as well? 
+## 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size? Does the state with the highest obesity growth have the highest population growth as well? 
 ```{r}
 mergeLong <- finalMerge %>%
   pivot_longer(!Area&!Year, names_to = "type", values_to = "data")
@@ -301,7 +301,6 @@ mutateWide %>%
   ggplot(aes(pop_growth)) +
   geom_histogram(col = "gold1", fill = "red3") 
 ```
-
 
 ### Trends
 If we look at the states with the highest population growth, none of them appear in the highest obesity growth.
