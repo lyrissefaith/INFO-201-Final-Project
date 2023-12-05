@@ -141,8 +141,58 @@ This data shows that on average, as the years progress, Colorado has decreased t
 
 
 ## 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
-```{r}
+```{r, echo=FALSE}
+high <- finalMerge %>%
+  group_by(Year) %>%
+  slice_max(Obesity) %>%
+  ungroup()
+low <- finalMerge %>%
+  group_by(Year) %>%
+  slice_min(Obesity) %>%
+  ungroup()
+```
 
+**Highest obesity percentage per year:**
+
+|     State | Year | Obesity Rate |
+|  -------- | :------: | :----:   |
+|Louisiana  |   2015   |  36.2    |
+|Mississippi|   2016   |  37.3    |
+|West Virginia|   2017   |  38.1    |
+|West Virginia|   2018   |  39.5      |
+|Mississippi|   2018   |  39.5    |
+|Mississippi|   2019   |   40.8   |
+|Mississippi|   2020   |  39.7    |
+|West Virginia|   2021   |   40.6   |
+|West Virginia|   2022   |   41.6   |
+
+**Lowest obesity percentage per year:**
+
+|     State | Year | Obesity Rate |
+|  -------- | :------: | :----:   |
+|Colorado   |   2015   |  20.2    |
+|Colorado   |   2016   |  22.3    |
+|Colorado   |   2017   |  22.6    |
+|Colorado   |   2018   |  23      |
+|Colorado   |   2019   |  23.8    |
+|District of Columbia|   2019   |   23.8   |
+|Colorado   |   2020   |  24.2    |
+|District of Columbia|   2021   |   24.7   |
+|District of Columbia|   2022   |   21.5   |
+
+```{r, echo=FALSE}
+merge_high_low <- full_join(high, low, by = join_by(Area, Year, Population, Obesity))
+
+ggplot(merge_high_low, aes(Year, Obesity, col = Area)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "High VS Low Obesity Rates ", x="Years", y="Obesity Rates")
+```
+```{r, echo=FALSE}
+ggplot(merge_high_low, aes(Year, Population, col = Area)) +
+  geom_point() + 
+  geom_line() +
+  labs(title = "Population Growth", x="Years", y="Population")
 
 ```
 
