@@ -71,8 +71,6 @@ colnames(short_obesity_data) <- c("Area","Obesity", "Year")
 finalMerge <- left_join(popLong, short_obesity_data) 
 ```
 
-This is our dataset, population data from 2015-2022 and obesity percentages per state: **mergedObesityPop**. 
-
 ## Questions & Data
 ## 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
 ```{r}
@@ -230,7 +228,16 @@ mutateWide <- obesity_wide %>%
   mutate(population_wide, pop_growth = ((population_wide$"2022" - population_wide$'2015')/8), na.rm = TRUE) %>%
   arrange(desc(ob_growth))%>%
   select(Area, "2015", "2022", ob_growth, pop_growth)
-mutateWide
+
+growthDf <- mutateWide %>%
+  select(Area, ob_growth, pop_growth)
+colnames(growthDf)[2] <- "Obesity"
+colnames(growthDf)[3] <- "Population"
+growthLong <- growthDf %>%
+  pivot_longer(!Area, names_to = "type", values_to = "growth_poc")
+
+finalData <- left_join(mergeWide, growthLong)
+finalData
 
 head(mutateWide, 5)
 tail(mutateWide, 7)
@@ -368,7 +375,7 @@ If we compare the population growth of the states with highest obesity growth:
 |Kansas   |   0.0625   |  3517    |
 |Arkansas   |   0.100   |  8449    |
 
-**Top 5 population growth rate & obesity growth:**
+****Top 5 population growth rate & obesity growth:**
 
 |     State | pop_growth | ob_growth |
 |  -------- | :------: | :----:   |
@@ -440,5 +447,9 @@ mergeLong %>%
 If we look specifically to growth trend, we **cannot** find a specific correlation of highest/lowest obesity growth correlating with the highest/lowest population growth. 
 
 * Referencing to **Graph 5**, Texas, with the highest population growth, has the higher obesity growth value. Illinois, with the lowest population growth, has higher obesity values compared to Minnesota, the state with the highest obesity growth rate.    
-* Referencing to **Graph 6**, Texas with the highest population growth rate, also has the highest population growth value compared to Minnesota, with the highest obesity growth rate. Illinois, with the lowest population growth rate, has a higher population growth value than Minnesota as well. 
+* Referencing to **Graph 6**, Texas with the highest population growth rate, also has the highest population growth value compared to Minnesota, with the highest obesity growth rate. Illinois, with the lowest population growth rate, has a higher population growth value than Minnesota as well.     
 
+
+
+
+Our final dataset is _**finalData**_. Population data from 2015-2022 and obesity percentages per state, with additional categorical and numerical columns _"type"_ and _"growth_roc"_, respectivley.  
