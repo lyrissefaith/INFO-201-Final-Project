@@ -78,59 +78,43 @@ This is our dataset, population data from 2015-2022 and obesity percentages per 
 ```{r}
 #Highest and lowest obesity percentage per state
 
-ob2015_data <- mergedObesityPop[mergedObesityPop$type == "obesity", ]
-ob2015 <- ob2015_data[, "2015"]
+ob2015_data <- finalMerge[finalMerge$Year == "2015", ]
+ob2015 <- ob2015_data[, "Obesity"]
 
-highest_obesity_state <- ob2015_data$area[which.max(ob2015)]
-highest_obesity_percentage <- max(ob2015)
-lowest_obesity_state <- ob2015_data$area[which.min(ob2015)]
-lowest_obesity_percentage <- min(ob2015)
+highest_obesity_state <- ob2015_data$Area[which.max(ob2015$Obesity)]
+highest_obesity_percentage <- max(ob2015$Obesity)
+lowest_obesity_state <- ob2015_data$Area[which.min(ob2015$Obesity)]
+lowest_obesity_percentage <- min(ob2015$Obesity)
 
 cat("The state with the highest obesity percentage in 2015 is", highest_obesity_state, "with a percentage of",  highest_obesity_percentage, "\n")
 cat("The state with the lowest obesity percentage in 2015 is", lowest_obesity_state, "with a percentage of", lowest_obesity_percentage, "\n")
 
 #trends up to 2022
 
-years <- as.character(2015:2022)
-obesity_trend_data <- obesity_data[, c("area", "type", years)]
-find_trend <- function(state) {
-  state_data <- obesity_trend_data[obesity_trend_data$area == state, ]
-  trend_values <- as.numeric(state_data[, years])
-  return(trend_values)
-}
-calculate_yearly_change <- function(trend_values) {
-  annual_change <- c(0, diff(trend_values))
+highest_obesity_data <- finalMerge[finalMerge$Area == highest_obesity_state, ]
+lowest_obesity_data <- finalMerge[finalMerge$Area == lowest_obesity_state, ]
+
+calculate_annual_change <- function(state_data) {
+  annual_change <- c(0, diff(state_data$Obesity) / diff(state_data$Year))
   return(annual_change)
 }
 
-highest_obesity_trend <- find_trend(highest_obesity_state)
-highest_obesity_annual_change <- calculate_yearly_change(highest_obesity_trend)
+highest_obesity_annual_change <- calculate_annual_change(highest_obesity_data)
+lowest_obesity_annual_change <- calculate_annual_change(lowest_obesity_data)
 
-lowest_obesity_trend <- find_trend(lowest_obesity_state)
-lowest_obesity_annual_change <- calculate_yearly_change(lowest_obesity_trend)
-
-average_annual_change_highest <- mean(highest_obesity_annual_change[2:8])
-average_annual_change_lowest <- mean(lowest_obesity_annual_change[2:8])
-rounded_high <- round(average_annual_change_highest, digits = 2)
-rounded_low <- round(average_annual_change_lowest, digits = 2)
-
-cat("Average annual change in obesity percentage for", highest_obesity_state, "from 2016 to 2022:", rounded_high, "\n")
-cat("Average annual change in obesity percentage for", lowest_obesity_state, "from 2016 to 2022:", rounded_low, "\n")
-
-#should I print the original 2015 and 2022 for each of these so I can see that they are increasing regardless?
-
-#if we want to include a plot:
-df <- data.frame(
-  year = rep(2016:2022, 2),
-  state = rep(c(highest_obesity_state, lowest_obesity_state), each = 7),
-  annual_change = c(highest_obesity_annual_change[2:8], lowest_obesity_annual_change[2:8])
+library(ggplot2)
+combined_data <- rbind(highest_obesity_data, lowest_obesity_data)
+combined_annual_change <- calculate_annual_change(combined_data)
+plot_data <- data.frame(
+  year = rep(2015:2022, 2),
+  state = rep(c(highest_obesity_state, lowest_obesity_state), each = 8),
+  annual_change = c(highest_obesity_annual_change, lowest_obesity_annual_change)
 )
-
-ggplot(df, aes(x = year, y = annual_change, color = state)) +
+ggplot(plot_data, aes(x = year, y = annual_change, color = state)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +  
   labs(
-    title = "Annual Change in Obesity Percentage (2016-2022)",
+    title = "Annual Change in Obesity Percentage (2015-2022)",
     x = "Year",
     y = "Annual Change in Obesity Percentage",
     color = "State"
