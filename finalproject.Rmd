@@ -202,29 +202,26 @@ ggplot(merge_high_low, aes(Year, Population, col = Area)) +
 
 ```{r}
 # Changes in obesity rates for each state
-obesity_changes <- mergedObesityPop %>%
-  filter(type == "obesity") %>%
-  group_by(area) %>%
-  summarise(obesity_change = `2022` - `2015`)
+obesity_changes <- finalMerge %>%
+  group_by(Area) %>%
+  summarize(obesity_change = last(Obesity) - first(Obesity))
 
 # Changes in population for each area 
-population_changes <- mergedObesityPop %>%
-  filter(type == "population") %>%
-  group_by(area) %>%
-  summarise(population_change = `2022` - `2015`)
+population_changes <- finalMerge %>%
+  group_by(Area) %>%
+  summarize(population_change = last(Population) - first(Population))
 
 # Outliers in obesity rate changes
 obesity_outliers <- obesity_changes %>%
   filter(abs(scale(obesity_change)) > 2)  
 
 # Merged the population changes with obesity outliers
-population_vs_obesity_outliers <- inner_join(population_changes, obesity_outliers, by = "area")
-print(population_vs_obesity_outliers)
+population_vs_obesity_outliers <- inner_join(population_changes, obesity_outliers, by = "Area")
+population_vs_obesity_outliers
 ```
-The states with significant changes in obesity rates are District of Columbia and Minnesota. 
 
-District of Columbia had a decrease in population from 2015 to 2022. 
-The obesity change - 0.6 indicates a decrease in obesity rate. 
+The state with a significant changes in obesity rates is Minnesota. 
+
 Minnesota saw a big growth in population from 2015 to 2022 resulting in a big increase in obesity rate. 
 Increase in population often result in a increase in obesity rate. 
 
