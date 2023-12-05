@@ -208,7 +208,7 @@ Minnesota saw a big growth in population from 2015 to 2022 resulting in a big in
 Increase in population often result in a increase in obesity rate. 
 
 
-## 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size? Does the state with the highest obesity growth have the highest population growth as well? 
+## 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size? Does the state with the highest/lowest obesity growth have the highest/lowest population growth as well and vice versa?
 ```{r}
 mergeLong <- finalMerge %>%
   pivot_longer(!Area&!Year, names_to = "type", values_to = "data")
