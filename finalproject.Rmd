@@ -254,22 +254,29 @@ tail(mutateWide, 7)
 
 ### Obesity Growth
 The state with the _highest rate_ of obesity growth from 2015 - 2022 is **Minnesota**, with a growth rate of 1.06. The runner ups are Ohio, with a growth of 0.925, and Wisconsin with a growth of 0.913. 
-Top 5 obesity growth rate:    
-1 Minnesota      1.06     
-2 Ohio           0.925   
-3 Wisconsin      0.913     
-4 Utah           0.9      
-5 Montana        0.837  
+
+**Top 5 obesity growth rate:**
+
+|     State | Obesity Rate of Change |
+|  -------- | :----:   |
+|Minnesota  |  1.06    |
+|Ohio       |  0.925    |
+|Wisconsin  |  0.913    |
+|Utah       |  0.9      |
+|Montana    |  0.837    |
 
 The state with the _lowest rate_ of obesity from 2015-2022 is **District of Columbia** with a growth of -0.075, the only state with a negative growth of obesity. 
 
-Lowest 5 obesity growth rate:   
-1 Arkansas        0.100   
-2 Kansas          0.0625    
-3 Oregon          0.0500    
-4 Illinois        0.0250    
-5 Alabama         0.0250    
-6 District of Columbia   -0.0750    
+**Lowest 5 obesity growth rate: **
+
+|     State | Obesity Rate of Change |
+|  -------- | :----:   |
+|District of Columbia  |  -0.0750    |
+|Alabama    |  0.0250    |
+|Illinois   |  0.0250    |
+|Oregon     |  0.0500    |
+|Kansas     |  0.0625    |
+
 
 #### Graph 1: Comparing growth of obesity of largest and smallest growth
 ```{r}
@@ -293,21 +300,31 @@ tail(poparrange, 6)
 ```
 
 The state with the _highest rate_ of population growth from 2015 - 2022 is **Texas**, with a growth rate of 319,940. The runner ups are Florida, Georgia, North Carolina, and Washington. 
-Top 5 population growth rate: 
-1 Texas            319,940
-2 Florida          254,473
-3 Georgia          91,804
-4 North Carolina   83,416
-5 Washington       77,766
+
+**Top 5 population growth rate:**
+
+|     State | Population Rate of Change |
+|  -------- | :----:   |
+|Texas      |  319,940    |
+|Florida    |  254,473    |
+|Georgia    |  91,804    |
+|North Carolina |  83,416    |
+|Washington     |  77,766    |
+
 
 The state with the _lowest rate_ of population growth from 2015 - 2022 is **Illinois**, with a growth rate of -34,610 The runner ups are Puerto Rico (however note obesity growth is missing), Louisiana, West Virginia, Mississippi, and Wyoming. 
-Lowest 5 population growth rate: 
-1 Wyoming         -529 
-2 Mississippi     -6052
-3 West Virginia   -8362
-4 Louisiana       -9298
-5 Puerto Rico     -31430
-6 Illinois        -34610
+
+**Lowest 5 population growth rate: **
+
+|     State | Population Rate of Change |
+|  -------- | :----:   |
+|Illinois    |  -34610 |
+|Puerto Rico  |  -31430    |
+|Louisiana    |  -9298    |
+|West Virginia |  -8362    |
+|Mississippi     |  -6052    |
+|Wyoming     |  -529    |
+
 
 #### Graph 2: Comparing growth of population of largest and smallest growth
 ```{r}
@@ -346,40 +363,47 @@ If we look at the states with the highest population growth, none of them appear
 This is the same for the lowest population growth as well, with none appearing in the lowest obesity growth. 
 If we compare the population growth of the states with highest obesity growth: 
 
-**Top 5 obesity growth rate** & population growth:    
-Area.           ob_growth.      pop_growth    
-1 Minnesota      1.06             29394   
-2 Ohio           0.925            17316   
-3 Wisconsin      0.913            16450   
-4 Utah           0.9              49871   
-5 Montana        0.837            11549   
+**Top 5 obesity growth rate & population growth: **
 
-**Lowest 5 obesity growth rate** & population growth:   
-Area.           ob_growth.        pop_growth    
-1 Arkansas        0.100             8449    
-2 Kansas          0.0625            3517    
-3 Oregon          0.0500            28043   
-4 Illinois        0.0250            -34610    
-5 Alabama         0.0250            27744   
-6 District of Columbia  -0.0750     -450    
+|     State | ob_growth | pop_growth |
+|  -------- | :------: | :----:   |
+|Minnesota   |   1.06   |  29394    |
+|Ohio   |   0.925   |  17316    |
+|Wisconsin   |   0.913   |  16450    |
+|Utah   |   0.9   |  49871      |
+|Montana   |   0.837   |  11549    |
 
+**Lowest 5 obesity growth rate & population growth:**
 
-**Top 5 population growth rate** & obesity growth:    
-Area.           pop_growth.        ob_growth:     
-1 Texas            319,940            0.25      
-2 Florida          254,473            0.7   
-3 Georgia          91,804             0.425   
-4 North Carolina   83,416             0.25    
-5 Washington       77,766             0.65    
+|     State | ob_growth | pop_growth |
+|  -------- | :------: | :----:   |
+|District of Columbia   |   -0.0750   |  -450    |
+|Alabama   |   0.0250   |  27744    |
+|Illinois   |   0.0250   |  -34610    |
+|Oregon   |   0.0500   |  28043      |
+|Kansas   |   0.0625   |  3517    |
+|Arkansas   |   0.100   |  8449    |
 
-**Lowest 5 population growth rate** & obesity growth:   
-Area.           pop_growth.        ob_growth:     
-1 Wyoming         -529                0.65    
-2 Mississippi     -6052               0.175   
-3 West Virginia   -8362               0.75    
-4 Louisiana       -9298               0.175   
-5 Puerto Rico     -31430              NA    
-6 Illinois        -34610              0.0250    
+****Top 5 population growth rate & obesity growth:**
+
+|     State | pop_growth | ob_growth |
+|  -------- | :------: | :----:   |
+|Texas      |  319,940    |  0.25    |
+|Florida    |  254,473    |  0.7    |
+|Georgia    |  91,804    |  0.425    |
+|North Carolina |  83,416    |  0.25    |
+|Washington     |  77,766    |  0.65    |
+
+**Lowest 5 population growth rate & obesity growth:**
+
+|     State | pop_growth | ob_growth |
+|  -------- | :------: | :----:   |
+|Illinois    |  -34610 |  0.0250    |
+|Puerto Rico  |  -31430   |  NA    |
+|Louisiana    |  -9298    |  0.175    |
+|West Virginia |  -8362    |  0.75    |
+|Mississippi     |  -6052    |  0.175    |
+|Wyoming     |  -529    |  0.65    |
 
 
 #### _**(reference Graph 3 & 4)**_
@@ -432,8 +456,5 @@ mergeLong %>%
 If we look specifically to growth trend, we **cannot** find a specific correlation of highest/lowest obesity growth correlating with the highest/lowest population growth. 
 
 * Referencing to **Graph 5**, Texas, with the highest population growth, has the higher obesity growth value. Illinois, with the lowest population growth, has higher obesity values compared to Minnesota, the state with the highest obesity growth rate.    
-* Referencing to **Graph 6**, Texas with the highest population growth rate, also has the highest population growth value compared to Minnesota, with the highest obesity growth rate. Illinois, with the lowest population growth rate, has a higher population growth value than Minnesota as well.     
-
-
-
+* Referencing to **Graph 6**, Texas with the highest population growth rate, also has the highest population growth value compared to Minnesota, with the highest obesity growth rate. Illinois, with the lowest population growth rate, has a higher population growth value than Minnesota as well. 
 
