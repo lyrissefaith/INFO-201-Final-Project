@@ -146,16 +146,6 @@ This data shows that on average, as the years progress, Colorado has decreased t
 
 ```
 
-Highest obesity percentage per year: 
-2015: Louisiana
-2016: West Virginia
-2017: West Virginia
-2018: West Virginia & Mississippi (tied)
-2019: Mississippi
-2020: Mississippi
-2021: West Virginia
-2022: West Virginia
-
 
 ### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
 #### I'm not sure if this is right because when I do it in another way where I graph outliers, there are no outliers. But when I write the code in this way it shows two states that have outling results. The graph is a straight line slope though, so I don't know if it has no outliers? Might have to re-do after looking at question 2? 
