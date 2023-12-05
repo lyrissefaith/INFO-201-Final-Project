@@ -375,7 +375,7 @@ If we compare the population growth of the states with highest obesity growth:
 |Kansas   |   0.0625   |  3517    |
 |Arkansas   |   0.100   |  8449    |
 
-****Top 5 population growth rate & obesity growth:**
+**Top 5 population growth rate & obesity growth:**
 
 |     State | pop_growth | ob_growth |
 |  -------- | :------: | :----:   |
