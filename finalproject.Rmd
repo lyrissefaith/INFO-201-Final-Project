@@ -368,7 +368,7 @@ ggplot(summaryDf, aes(ob_growth, pop_growth, col = Area)) +
   geom_point() +
   labs(x = "Obesity Growth Rate (%)",
         y = "Population Growth Rate (%)") +
-  geom_smooth(method = "lm", se = FALSE, col = "green4", alpha = 0.5)
+  geom_smooth(mapping = aes(ob_growth, pop_growth, col = Area))
 
 ```
 
