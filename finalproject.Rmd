@@ -361,6 +361,9 @@ tail(popGrowCompare, 6)
 growthCompare %>% 
   count(biggerOb == "True", na.rm = TRUE)
 
+summaryDf <- growthCompare %>%
+  select(Area, ob_growth, pop_growth, biggerOb)
+
 ```
 
 ### Trends
