@@ -364,12 +364,14 @@ growthCompare %>%
 summaryDf <- growthCompare %>%
   select(Area, ob_growth, pop_growth, biggerOb)
 
+```
+#### Graph 7: Relationship Between Obesity and Population Growth Rates (%)
+```{r, echo=FALSE}
 ggplot(summaryDf, aes(ob_growth, pop_growth, col = Area)) +
   geom_point() +
   labs(x = "Obesity Growth Rate (%)",
         y = "Population Growth Rate (%)") +
   geom_smooth(mapping = aes(ob_growth, pop_growth, col = "green2"))
-
 ```
 
 
