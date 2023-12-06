@@ -421,7 +421,6 @@ If we compare the population growth of the states with highest obesity growth:
 |Louisiana |  -1.59%    |  3.87%    |True |
 |Wyoming     |  -0.723%    |  17.9%    |True |
 
-**Total Overview of Obesity GR > Population GR:**
 
 **Total Overview of Obesity GR > Population GR:**
 
