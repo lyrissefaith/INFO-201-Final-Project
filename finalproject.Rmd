@@ -357,6 +357,10 @@ popGrowCompare <- growthCompare%>%
   arrange(desc(pop_growth))
 head(popGrowCompare, 5)
 tail(popGrowCompare, 6)
+
+growthCompare %>% 
+  count(biggerOb == "True", na.rm = TRUE)
+
 ```
 
 ### Trends
@@ -404,6 +408,14 @@ If we compare the population growth of the states with highest obesity growth:
 |Louisiana |  -0.0159    |  0.0387    |True |
 |Wyoming     |  -0.00723    |  0.179    |True |
 
+**Total Overview of Obesity GR > Population GR:**
+
+|     Value | Count | 
+|  -------- | :------: |
+|True    |  43 |
+|False  |  8   | 
+|NA    |  1    | 
+
 The state with the _highest rate_ of obesity growth from 2015 - 2022 is **Minnesota**, with a growth rate of 0.326, or 32.6% The runner ups are Utah, and Montana.
 
 The state with the _lowest rate_ of obesity from 2015-2022 is **District of Columbia** with a growth of -0.0271, or -2.71%, the only state with a negative growth of obesity. 
@@ -418,4 +430,3 @@ The state with the _lowest rate_ of population growth from 2015 - 2022 is **West
 
 * Referencing to **Graph 5**, Idaho, with the highest population growth, has the around the same obesity values and trend as Minnesota, the state with the highest obesity growth rate. West Virginia, with the lowest population growth, has the highest obesity yearly values overall, and higher obesity values compared to Minnesota, the state with the highest obesity growth rate, however not as high as a growth rate.    
 * Referencing to **Graph 6**, Minnesota, with the highest obesity growth rate has an overall high population value, despite have a smaller growth rate than Idaho, with the highest growth rate. Despite the graph, the growth rate of Minnesota is 0.0429, 4.29%, and Idaho is 0.174, 17.4%. 
-
