@@ -364,6 +364,14 @@ growthCompare %>%
 summaryDf <- growthCompare %>%
   select(Area, ob_growth, pop_growth, biggerOb)
 
+summaryDf %>%
+  filter(na.rm = TRUE) %>%
+  ggplot(aes(ob_growth, pop_growth, col = Area)) +
+  geom_point() +
+  labs(x = "Obesity Growth Rate (%)",
+        y = "Population Growth Rate (%)")+
+  geom_smooth(mapping = aes(ob_growth, pop_growth))
+
 ```
 
 
