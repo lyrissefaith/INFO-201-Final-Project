@@ -377,41 +377,41 @@ If we compare the population growth of the states with highest obesity growth:
 
 |     State | ob_growth | pop_growth | Obesity > Population growth | 
 |  -------- | :------: | :----:       | :----:   |
-|Minnesota   |   0.326   |  0.0429    | True |
-|Utah   |   0.294   |  0.134    | True |
-|Montana   |   0.284   |  0.0897    | True |
-|Ohio   |   0.248   |  0.0119      | True |
-|Wisconsin   |   0.238   |  0.0228    | True |
+|Minnesota   |   32.6%   |  4.29%    | True |
+|Utah   |   29.4%   |  13.4%    | True |
+|Montana   |   28.4%   |  8.97%    | True |
+|Ohio   |   24.8&   |  1.19%      | True |
+|Wisconsin   |   23.8%   |  2.28%    | True |
 
 **Lowest 5 obesity growth rate:**
 
 |     State | ob_growth | pop_growth |Obesity > Population growth | 
 |  -------- | :------: | :----:   | :----:   |
-|District of Columbia   |   -0.0271   |  -0.00533    |False |
-|Alabama   |   0.00562   |  0.0457    |False |
-|Illinois   |   0.00649   |  -0.0215    |True |
-|Oregon   |   0.0133   |  0.0559      |False |
-|Kansas   |   0.0146   |  0.00967    |True |
+|District of Columbia   |   -2.71%   |  -0.533%    |False |
+|Alabama   |   0.562%   |  4.57%    |False |
+|Illinois   |   0.649%   |  -2.15%    |True |
+|Oregon   |   1.33%   |  5.59%      |False |
+|Kansas   |   1.46%   |  0.967%    |True |
 
 **Top 5 population growth rate:**
 
 |     State | pop_growth | ob_growth |Obesity > Population growth | 
 |  -------- | :------: | :----:   | :----:   |
-|Idaho      |  0.174    |  0.168    |False |
-|Utah    |  0.134    |  0.294    |True |
-|Nevada    |  0.108    |  0.195    |True |
-|Florida |  0.101    |  0.209    |True |
-|Texas     |  0.0932    |  0.0617    |False |
+|Idaho      |  17.4%    |  16.8%    |False |
+|Utah    |  13.4%    |  29.4%    |True |
+|Nevada    |  10.8%    |  19.5%    |True |
+|Florida |  10.1%    |  20.9%    |True |
+|Texas     |  9.32%    |  6.17%    |False |
 
 **Lowest 5 population growth rate:**
 
 |     State | pop_growth | ob_growth |Obesity > Population growth | 
 |  -------- | :------: | :----:   |:----:   |
-|West Virginia    |  -0.0363 |  0.169    |True |
-|Illinois  |  -0.0215   |  0.00649    |True |
-|Mississippi    |  -0.0162    |  0.0393    |True |
-|Louisiana |  -0.0159    |  0.0387    |True |
-|Wyoming     |  -0.00723    |  0.179    |True |
+|West Virginia    |  -3.63% |  16.9%    |True |
+|Illinois  |  -2.15%   |  0.649%    |True |
+|Mississippi    |  -1.62%    |  3.93%    |True |
+|Louisiana |  -1.59%    |  3.87%    |True |
+|Wyoming     |  -0.723%    |  17.9%    |True |
 
 **Total Overview of Obesity GR > Population GR:**
 
