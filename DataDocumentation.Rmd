@@ -4,13 +4,21 @@ output: html_document
 date: "2023-12-07"
 ---
 
-Once you have created your final “clean” dataset, you will need to create transparent and accessible documentation about your dataset. This document should be enough for someone to begin using your dataset for their own work.
+**Data Documentation: Obesity Vs. Population of U.S. States**
 
-The documentation should include:
+1. Original Data Sources:
+_Obesity Data_: State of Childhood Obesity (pulls data from the same census as the data from Data.gov (https://stateofchildhoodobesity.org/demographic-data/adult/). Both obesity data originate from the data collected by the Behavioral Risk Factor Surveillance System (BRFSS) data, from the CDC).
 
-(3 points) What are the original data sources (including web links or other pointers to the original material)
-(3 points) Explanation of all variables you include here.
-(3 points) Basic summary statistics: number of rows, column, and number of missing/otherwise invalid values by each column
-You may add other helpful details, e.g. figures or tables, to the documentation.
+_Population Data_: We found our population data from the United States Census Bureau website. The two data sets are from  (https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html) and (https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html).
 
-If you do not know some of the answers, the state it clearly: e.g. “The original data collector is unknown”. There should not be too many unknowns though. And you should know everything that you can compute from data, such as the number of missings.
+2. Final dataset: _finalData_
+_**Variables:**_
+Area: State name
+type: obesity or population classification for the rest of the columns
+2015-2022 (columns): year
+growth_pc: obesity or population growth rate (percentage growth) from 2015-2022 (classified by the type variable)
+
+3. Basic summary statistics: 
+Within the final dataset, there are a total of 104 rows, and 11 columns. This is a total of 1,144 observations/values.
+
+There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
