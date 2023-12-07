@@ -8,7 +8,7 @@ library(tidyverse)
 ```
 # Final Project (Population vs. Obesity by State)
 
-**1. Introduction**
+**1. Introduction**	
 1a) We are looking at the percentage of a state that is considered obese, to evaluate the correlation of obesity and population size. We know that America is viewed as more obese compared to foreign counterparts, and we know that some states have higher populations. We are interested to see if states with higher populations, or political positions affect obesity numbers. We want to view the connection between obesity numbers and population numbers to put it into perspective.
 We are creating a dataset that combines the obesity percentage per state and the population data in that state to find patterns and trends between the size of the population and how obese they are in the USA. We also will use this data to look at the regions that contain a more obese population. Does the location of the state correlate with the percentage of the population that is obese?
 
@@ -24,7 +24,7 @@ Are there any states where obesity has been increasing or decreasing at a faster
 1d) Obesity can lead to other health problems such as chronic diseases. Knowing what areas have higher obesity rates can help with narrowing down target intervention for health professionals or public workers. Answering our questions is interesting because knowing how population sizes relate to obesity offers insights into societal impact. It can help healthcare systems and later on increase productivity. Also, identifying patterns across states assists in customizing interventions for specific regions, effectively tackling disparities. Learning the changes of obesity alongside population dynamics provides foresight into forthcoming health concerns, steering proactive strategies. Overall, the results we find should serve as a tool for policymakers, aiding resource distribution and shaping effective public health strategies.
 
 
-**2. Explain your Data**
+**2. Explain your Data**	
 2a) We use these datasets due to their comprehensive nature and credibility. It has all the data we want as it includes obesity rates for each state over the years and also has the population divided for each state over the years. 
 These datasets also come from credible sources, who collected the data for the purpose of showing the percentage of obesity per state, as well as the population of a state for future purposes. 
 Basic summary statistics of final dataset (finalData): 104 rows, 11 columns, 8 total NA values for Puerto Rico (population value 2016-2022, growth_poc). 
@@ -53,7 +53,7 @@ Our final dataset merge these two datasets, population and obesity together. We 
 2j) There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
 
 
-**3. Discuss your methods**
+**3. Discuss your methods**	
 3a)
 Question 1: 
 In order to tackle a trend heavy question, we started by searching the data for the states with the highest and lowest obesity percentages. Since the data we are working from reflects self reported obesity percentages, we knew that the states were aware of their obesity percentage. We focused on implementing data including the variables “Area”, “Year”, and “Obesity”. We were interested in finding how, in knowing whether they had a high or low obesity percentage, states were able to increase or decrease their percentage. 
@@ -142,7 +142,7 @@ colnames(short_obesity_data) <- c("Area","Obesity", "Year")
 finalMerge <- left_join(popLong, short_obesity_data) 
 ```
 
-**4. Talk about your results**
+**4. Talk about your results**		
 ## Questions & Data
 ## 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
 ```{r, echo = FALSE}
@@ -568,7 +568,7 @@ Mississippi (-1.62%), Louisiana (-1.59%), and Wyoming (-0.723%).
 
 43 out of the 51 states (including District of Columbia) have higher obesity growth rates compared to their population growth rate, in which we can infer that states are becoming more obese compared to their population growth rate. 
 
-### Question 4: Findings
+### Question 4: Findings	
 It is hard to draw a confident conclusion from this data, as it is hard to see a consistent strong trend, except that Utah has both the highest population growth, and the second biggest obesity growth rate. However we can see that for the five states with the highest obesity growth rate, all of their obesity growth rates are higher than their population growth rate, with the three of the bottom five with the lowest obesity growth rate having obesity growth rates that are smaller than their population growth. 
 From the table with the states with the lowest population growth rate, all five have obesity growth rates higher than their population growth. For the top five population growth states, the first and fifth states have a population growth rate greater than the obesity rate, however the other three have higher obesity rates. 
 From my graphs 5-6, we can see that despite having a higher growth rate, some states have higher obesity/population values than the states with highest growth. This can be taken into account. 
@@ -576,13 +576,13 @@ Referring to the tables in question 2, West Virginia ties with Mississippi for h
 For an overall summary, 43 states have obesity growth rates greater than their population growth rate, which we can conclude that more of their population, even standardized, are becoming more obese. 	
 
 
-5b) Limitations:
+5b) Limitations:	
 Because the obesity rates among different States over the years were so close to each other, it was hard to find clear trends. Therefore, it was hard for us to make claims within our story. For example, Colorado had highest population and lowest obesity and District of Columbia had lowest population and second lowest obesity
 
-5c) Future work direction:
+5c) Future work direction:	
 After analyzing the data, we noticed that high obesity rates in states are constantly rising and the low obesity rates are constantly remaining low. Something that might help future analysis is to find data that would discuss the habits in these states. Potentially fast food restaurants in that area, or job security percentages. Many factors can relate to obesity and would be interesting to learn more about. In looking at what other factors relate to obesity, there could be numerous that have less to do with population and more to do with geographic location. The region that high and low obesity rates are a part of could be something interesting to study, and potentially something our target audience would be interested to learn more about. Could a state in the region with the highest obesity rates be absorbed into those habits?
 
-**6. Summary**
+**6. Summary**		
 Our key takeaway from analyzing the data we found is that we did not find any clear trend between high obesity with high population rates, but we did find that states with higher obesity percentage values were found among those states with lower population growth by percentage rate. 
 When discovering trends among the states with the highest obesity percentage, we found that throughout the years of 2015 and 2022, Louisiana continued to rise in their obesity rates. If we could dive deeper, we would try to find the habits or actions that may contribute to this rise, however we did find that their population size was not a factor. Colorado was the lowest state in terms of obesity percentages, and continued to decrease their rates, on average, throughout the years.
 When comparing the growth rate (percentage rate) of obesity and population, we found a slight upward trend where higher obesity growth rates can slightly be attributed with higher population growth rates using percentage rate. 
