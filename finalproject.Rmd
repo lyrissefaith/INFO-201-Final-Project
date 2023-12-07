@@ -142,6 +142,7 @@ colnames(short_obesity_data) <- c("Area","Obesity", "Year")
 finalMerge <- left_join(popLong, short_obesity_data) 
 ```
 
+**4. Talk about your results**
 ## Questions & Data
 ## 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
 ```{r, echo = FALSE}
@@ -271,9 +272,8 @@ population_vs_obesity_outliers <- inner_join(population_changes, obesity_outlier
 |  -------- | :------: | :----:   |
 |Minnesota  |   235152   |  8.5    |
 
-The state with a significant changes in obesity rates is Minnesota. 
-Minnesota saw a big growth in population from 2015 to 2022 resulting in a big increase in obesity rate. 
-Increase in population often result in a increase in obesity rate. 
+The data tells us that Minnesota was the only state that saw a significant increase in obesity as it relates to the increase in population. 
+By answering this question, we identified Minnesota as a state with a significant increase in obesity rates, relating this change to a substantial population growth during the analyzed period (2015-2022). The population change between these years saw a big growth of 235152. Simultaneously, we could see that Minnesota also resulted in a big change in obesity rate, in which it grew 8.5 percent. This tells us that there is a perceived relationship between population growth and increased obesity rates.
 
 
 ## 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size? Does the state with the highest/lowest obesity growth have the highest/lowest population growth as well and vice versa?
