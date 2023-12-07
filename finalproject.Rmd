@@ -10,7 +10,7 @@ library(tidyverse)
 
 ## Intro
 ### Orignial Questions: 
-### 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
+### 1. What is the highest and lowest obesity state in 2015. How did that progress to 2022?
 
 
 ### 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
