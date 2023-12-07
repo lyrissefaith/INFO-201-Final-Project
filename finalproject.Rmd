@@ -191,9 +191,7 @@ ggplot(plot_data, aes(x = year, y = annual_change, color = state)) +
   ) +
   theme_minimal()
 ```
-
-This data shows that on average, as the years progress, Colorado has decreased their obesity levels by 0.67 and Louisiana continues to increase there obesity percentage by around 0.2.
-
+We found that Louisiana had the highest Obesity percentage in 2015 and made little to know improvements. The average rate of obesity in the state of Louisiana continued to increase by around 0.2 percent. Colorado, on the other hand, had the lowest obesity reported percentage of all 50 states, and continued to decrease their obesity percentage by around 0.67 percent on average from the years 2015 - 2022. After reviewing the graph created by Louisiana and Colorados Obesity trends, we came to the conclusion that the highest obesity percentage continued to trend upwards in obesity rates whereas the lowest continued to trend down. This information was important for us to note because it showed that patterns of obesity rates continued, no matter where on the spectrum they fell to begin with. We continued to learn about these trends in later questions.
 
 ## 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
 ```{r, echo=FALSE}
