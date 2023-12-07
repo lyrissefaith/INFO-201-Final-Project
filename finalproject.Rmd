@@ -237,12 +237,11 @@ growthLong <- growthDf %>%
   pivot_longer(!Area, names_to = "type", values_to = "growth_poc")
 
 finalData <- left_join(mergeWide, growthLong)
-finalData
 
 write.csv(finalData, "finalData.csv", row.names = FALSE)
 
-head(mutateWide, 5)
-tail(mutateWide, 7)
+topFiveOB <- head(mutateWide, 5)
+bottomSevenOB <- tail(mutateWide, 7)
 ```
 
 ### Obesity Growth (percentage growth)
@@ -258,14 +257,12 @@ mergeLong %>%
   geom_smooth(method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
 ```
 
-We can see from this graph, the difference of the highest (max) obesity growth state and the lowest (min) growth is high and there is a distinct difference. 
-
 ### Population Growth (percentage growth)
 ```{r, echo=FALSE}
 poparrange <- mutateWide %>%
     arrange(desc(pop_growth))
-head(poparrange, 5)
-tail(poparrange, 6)
+topFivePop <- head(poparrange, 5)
+bottomFivePop <- tail(poparrange, 6)
 ```
 
 #### Graph 2: Comparing growth of population of largest and smallest growth
@@ -352,13 +349,13 @@ mergeLong %>%
 growthCompare <- mutateWide %>%
   mutate(biggerOb = if_else(ob_growth > pop_growth, "True", "False"))%>%
   arrange(desc(ob_growth))
-head(growthCompare, 5)
-tail(growthCompare, 6)
+topFiveCompare <- head(growthCompare, 5)
+bottomSixCompare <- tail(growthCompare, 6)
 
 popGrowCompare <- growthCompare%>%
   arrange(desc(pop_growth))
-head(popGrowCompare, 5)
-tail(popGrowCompare, 6)
+topFiveComPop <- head(popGrowCompare, 5)
+bottomSixComPop <- tail(popGrowCompare, 6)
 
 growthCompare %>% 
   count(biggerOb == "True", na.rm = TRUE)
@@ -379,10 +376,9 @@ ggplot(summaryDf, aes(ob_growth, pop_growth, col = Area)) +
 
 
 ### Trends
-If we look at the states with the highest population growth, only Utah of them appear in the highest obesity growth.
-This is the same for the lowest population growth as well, with only Illinois appearing in the lowest obesity growth. 
-If we compare the population growth of the states with highest obesity growth: 
+..... 
 
+If we compare the population growth of the states with highest obesity growth: 
 **Top 5 obesity growth rate:**
 
 |     State | ob_growth | pop_growth | Obesity > Population growth | 
@@ -443,6 +439,5 @@ The state with the _lowest rate_ of population growth from 2015 - 2022 is **West
 
 
 ### Comparative Trends
-
 * Referencing to **Graph 5**, Idaho, with the highest population growth, has the around the same obesity values and trend as Minnesota, the state with the highest obesity growth rate. West Virginia, with the lowest population growth, has the highest obesity yearly values overall, and higher obesity values compared to Minnesota, the state with the highest obesity growth rate, however not as high as a growth rate.    
 * Referencing to **Graph 6**, Minnesota, with the highest obesity growth rate has an overall high population value, despite have a smaller growth rate than Idaho, with the highest growth rate. Despite the graph, the growth rate of Minnesota is 0.0429, 4.29%, and Idaho is 0.174, 17.4%. 
