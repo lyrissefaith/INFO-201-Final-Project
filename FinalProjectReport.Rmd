@@ -42,11 +42,11 @@ Our final dataset merge these two datasets, population and obesity together. We 
 
 2g) In our final dataset, _finalData_,  each row corresponds to a U.S. state, providing information on its population size or obesity rate, with data categorized by type, “Obesity” or “Population” for the years spanning from 2015 to 2022. Additionally with an additional column of growth/rate of change (percentage change) of obesity and population for years between 2015-2022. Our final summarizing data frame is called _summaryDf_. 
 
-2h) Following the processes of data cleaning and merging, we now have a cumulative total of 416 observations. Within the final dataset, there are a total of 104 rows, and 11 columns. This is a total of 1,144 observations/values.
+2h) Following the processes of data cleaning and merging, we now have a cumulative total of 1,144 observations. Within the final dataset, there are a total of 104 rows, and 11 columns. 
 
-2i) The relevant variables are Area, type, years 2015-2022, and the growth/rate of change columns. They are coded as their own columns, with values in each year and are classified by the type column, which indicates if the value is correlated to obesity or population data. 
+2i) The relevant variables are Area, type, years 2015-2022, and the growth/rate of change columns. They are coded as their own columns, with values in each year and are classified by the _type_ column, which indicates if the value is correlated to obesity or population data. 
 
-2j) Puerto Rico has missing obesity percentage values for years 2016-2022, making it a total of 7 missing values. 
+2j) There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
 
 
 **3. Discuss your methods**
