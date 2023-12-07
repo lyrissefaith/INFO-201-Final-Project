@@ -3,12 +3,12 @@ title: "finalproject"
 output: html_document
 date: "2023-11-30"
 ---
-```{r, echo = FALSE}
+```{r, echo = FALSE, results = 'hide'}
 library(tidyverse)
 ```
 # Final Project (Population vs. Obesity by State)
 
-**1. Introduction**		
+**1. Introduction**	
 1a) We are looking at the percentage of a state that is considered obese, to evaluate the correlation of obesity and population size. We know that America is viewed as more obese compared to foreign counterparts, and we know that some states have higher populations. We are interested to see if states with higher populations, or political positions affect obesity numbers. We want to view the connection between obesity numbers and population numbers to put it into perspective.
 We are creating a dataset that combines the obesity percentage per state and the population data in that state to find patterns and trends between the size of the population and how obese they are in the USA. We also will use this data to look at the regions that contain a more obese population. Does the location of the state correlate with the percentage of the population that is obese?
 
@@ -53,7 +53,7 @@ Our final dataset merge these two datasets, population and obesity together. We 
 2j) There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
 
 
-**3. Discuss your methods**		
+**3. Discuss your methods**	        
 3a)
 Question 1: 
 In order to tackle a trend heavy question, we started by searching the data for the states with the highest and lowest obesity percentages. Since the data we are working from reflects self reported obesity percentages, we knew that the states were aware of their obesity percentage. We focused on implementing data including the variables “Area”, “Year”, and “Obesity”. We were interested in finding how, in knowing whether they had a high or low obesity percentage, states were able to increase or decrease their percentage. 
@@ -101,28 +101,29 @@ We overall did not need to remove values to attain our goals.
 NA. The only statistical methods we used were simple math and formulas. 
 
 
-
+```{r, echo = FALSE, results = 'hide'}
 ## Data cleaning
 ### Read in our data and clean population data for 2010-2019
-```{r, echo = FALSE}
 pop_2010_2019 <- read_delim("../Data/pop_2010_2019.csv")
 short_pop_10_19 <- subset(pop_2010_2019, select = c("Area", "2015", "2016", "2017", "2018", "2019"))
 ```
 
+```{r, echo = FALSE, results = 'hide'}
 ### Read in our data and clean population data for 2020-2022
-```{r, echo = FALSE}
 pop_2020_2022 <- read_delim("../Data/pop_2020_2022.csv")
 short_pop_20_22 <- subset(pop_2020_2022, select = c("NAME", "POPESTIMATE2020", "POPESTIMATE2021", "POPESTIMATE2022"))
 colnames(short_pop_20_22) <- c("Area", "2020", "2021", "2022")
 ```
 
+
+```{r, echo = FALSE, results = 'hide'}
 ### Merging population data
-```{r, echo = FALSE}
-mergedpop <- left_join(short_pop_10_19, short_pop_20_22)
+mergedpop <- left_join(short_pop_10_19, short_pop_20_22, by = join_by(Area))
 ```
 
+
+```{r, echo = FALSE, results = 'hide'}
 ### Cleaning merged population data
-```{r, echo = FALSE}
 popLong <- pivot_longer(mergedpop,
                         !c(Area),
                         names_to="Year",
@@ -130,22 +131,26 @@ popLong <- pivot_longer(mergedpop,
   mutate(Year = as.numeric(sub("X", "", Year)))
 ```
 
+
+```{r, echo = FALSE, results = 'hide'}
 ### Read in our data and clean obesity data for 2015-2022
-```{r, echo = FALSE}
 obesity_data <- read_delim("../Data/National_Obesity_By_State.csv")
 short_obesity_data <- subset(obesity_data, select = c("NAME", "Obesity", "Year"))
 colnames(short_obesity_data) <- c("Area","Obesity", "Year")
 ```
 
+```{r, echo = FALSE, results = 'hide'}
+
 ### Merging population and obesity data
-```{r, echo = FALSE}
-finalMerge <- left_join(popLong, short_obesity_data) 
+finalMerge <- left_join(popLong, short_obesity_data, by = join_by(Area, Year)) 
 ```
 
-**4. Talk about your results**		
-## Questions & Data
+**4. Talk about your results**		  
+
+## Questions & Data       
+
 ## 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
-```{r, echo = FALSE}
+```{r, echo = FALSE, results = 'hide'}
 #Highest and lowest obesity percentage per state
 
 ob2015_data <- finalMerge[finalMerge$Year == "2015", ]
@@ -182,7 +187,7 @@ plot_data <- data.frame(
 )
 ggplot(plot_data, aes(x = year, y = annual_change, color = state)) +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +  
+  geom_smooth(formula = 'y ~ x', method = "lm", se = FALSE) +  
   labs(
     title = "Annual Change in Obesity Percentage (2015-2022)",
     x = "Year",
@@ -263,7 +268,7 @@ Examining the graph, it's apparent that each state has sustained a relatively st
 
 ## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning = FALSE}
 obesity_changes <- finalMerge %>%
   group_by(Area) %>%
   summarize(obesity_change = last(Obesity) - first(Obesity))
@@ -313,7 +318,7 @@ colnames(growthDf)[3] <- "Population"
 growthLong <- growthDf %>%
   pivot_longer(!Area, names_to = "type", values_to = "growth_poc")
 
-finalData <- left_join(mergeWide, growthLong)
+finalData <- left_join(mergeWide, growthLong, by = join_by(Area, type))
 
 write.csv(finalData, "finalData.csv", row.names = FALSE)
 
@@ -323,14 +328,14 @@ bottomSevenOB <- tail(mutateWide, 7)
 
 ### Obesity Growth (percentage growth)
 #### Graph 1: Comparing growth of obesity of largest and smallest growth
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 mergeLong %>%
   filter(type == "Obesity", Area %in% c("Minnesota", "District of Columbia"), na.rm = TRUE)%>%
   group_by(Area) %>%
   ggplot(aes(Year, data, col = Area)) +
   geom_line(size = 0.8) +
   labs(x="Years", y="Obesity from 2015-2022")+
-  geom_smooth(method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
+  geom_smooth(formula = y~x, method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
 ```
 
 This graph shows the visualization of the obesity percentage of the
@@ -341,7 +346,7 @@ comparatively, District of Columbia's obesity drops around 2021-2022.
 
 
 ### Population Growth (percentage growth)
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 poparrange <- mutateWide %>%
     arrange(desc(pop_growth))
 topFivePop <- head(poparrange, 5)
@@ -349,14 +354,14 @@ bottomFivePop <- tail(poparrange, 6)
 ```
 
 #### Graph 2: Comparing growth of population of largest and smallest growth
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 mergeLong %>%
   filter(type == "Population", Area %in% c("Idaho", "West Virginia"), na.rm = TRUE)%>%
   group_by(Area) %>%
   ggplot(aes(Year, data, col = Area)) +
   geom_line(size = 0.8) +
   labs(x="Years", y="Population from 2015-2022")+
-  geom_smooth(method = "lm", se = FALSE, alpha = 0.8, size = 0.2)
+  geom_smooth(formula = y ~ x, method = "lm", se = FALSE, alpha = 0.8, size = 0.2)
 ```
 
 This graph shows the visualization of the population of the states with
@@ -368,12 +373,12 @@ shows a strong downward trend.
 
 ### Distributions (obesity & population)
 #### Graph 3: Histogram: Obesity Growth Distibution
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 mutateWide %>%
   filter(na.rm = TRUE)%>%
   group_by(Area) %>%
   ggplot(aes(ob_growth)) +
-  geom_histogram(col = "gold1", fill = "green4") 
+  geom_histogram(bins = 30, col = "gold1", fill = "green4") 
 ```
 
 To cross reference, I will be using this graph to evaluate the
@@ -386,12 +391,12 @@ highest at 0.179, which is in the middle.
 
 
 #### Graph 4: Histogram: Population Growth Distibution
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 mutateWide %>%
   filter(na.rm = TRUE)%>%
   group_by(Area) %>%
   ggplot(aes(pop_growth)) +
-  geom_histogram(col = "gold1", fill = "red3") 
+  geom_histogram(bins = 30, col = "gold1", fill = "red3") 
 ```
 
 To cross reference, I will be using this graph to evaluate the
@@ -429,7 +434,7 @@ mergeLong %>%
                "West Virginia" = "orange3"
     )
   )+
-  geom_smooth(method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
+  geom_smooth(formula = y~x, method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
 ```
 
 Looking at this graph, we can see the Idaho (highest pop growth rate)
@@ -456,7 +461,7 @@ mergeLong %>%
                "West Virginia" = "orange3"
     )
   )+
-  geom_smooth(method = "lm", se = FALSE, alpha = 0.5, size = 0.2)
+  geom_smooth(formula = y~x, method = "lm", se = FALSE, alpha = 0.5, size = 0.2)
 ```
 
 Looking at this graph, we can see that Idaho and West Virginia both have
@@ -467,7 +472,7 @@ states, despite having a lower pop rate of change than Idaho.
 
 
 #### Comparing Growth by state (percentage growth)
-```{r, echo=FALSE}
+```{r, echo=FALSE, results = 'hide'}
 growthCompare <- mutateWide %>%
   mutate(biggerOb = if_else(ob_growth > pop_growth, "True", "False"))%>%
   arrange(desc(ob_growth))
@@ -488,21 +493,19 @@ summaryDf
 ```
 
 #### Graph 7: Relationship Between Obesity and Population Growth Rates (%)
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE}
 ggplot(summaryDf, aes(ob_growth, pop_growth, col = Area)) +
   geom_point() +
   labs(x = "Obesity Growth Rate (%)",
         y = "Population Growth Rate (%)") +
-  geom_smooth(mapping = aes(ob_growth, pop_growth, col = "green2"))
+  geom_smooth(formula = y~x, method = 'loess', mapping = aes(ob_growth, pop_growth, col = "green2"))
 ```
-
 Looking at this graph, we can see that there is a weak positive upward
 trend between obesity and population growth rate, as obesity growth rate
 increases, the population growth rate is sort of likely to be higher as
 well.
 
 ### Trends
-..... 
 
 If we compare the population growth of the states with highest obesity growth: 
 Table 1: **Top 5 obesity growth rate:**
@@ -575,7 +578,7 @@ Mississippi (-1.62%), Louisiana (-1.59%), and Wyoming (-0.723%).
 
 43 out of the 51 states (including District of Columbia) have higher obesity growth rates compared to their population growth rate, in which we can infer that states are becoming more obese compared to their population growth rate. 
 
-### Question 4: Findings	
+##### Question 4: Findings	
 It is hard to draw a confident conclusion from this data, as it is hard to see a consistent strong trend, except that Utah has both the highest population growth, and the second biggest obesity growth rate. However we can see that for the five states with the highest obesity growth rate, all of their obesity growth rates are higher than their population growth rate, with the three of the bottom five with the lowest obesity growth rate having obesity growth rates that are smaller than their population growth. 
 From the table with the states with the lowest population growth rate, all five have obesity growth rates higher than their population growth. For the top five population growth states, the first and fifth states have a population growth rate greater than the obesity rate, however the other three have higher obesity rates. 
 From my graphs 5-6, we can see that despite having a higher growth rate, some states have higher obesity/population values than the states with highest growth. This can be taken into account. 
@@ -594,4 +597,3 @@ Our key takeaway from analyzing the data we found is that we did not find any cl
 When discovering trends among the states with the highest obesity percentage, we found that throughout the years of 2015 and 2022, Louisiana continued to rise in their obesity rates. If we could dive deeper, we would try to find the habits or actions that may contribute to this rise, however we did find that their population size was not a factor. Colorado was the lowest state in terms of obesity percentages, and continued to decrease their rates, on average, throughout the years.
 When comparing the growth rate (percentage rate) of obesity and population, we found a slight upward trend where higher obesity growth rates can slightly be attributed with higher population growth rates using percentage rate. 
 We also found that of the 51 states (including the District of Columbia), 43 have obesity growth rates (percentage rate) higher than population growth rates (percentage rate), indicating that increased people and populations of states are becoming obese faster than the population can grow.  
-
