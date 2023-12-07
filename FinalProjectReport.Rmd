@@ -118,7 +118,9 @@ Examining the graph, it's apparent that each state has sustained a relatively st
 
 Question 3:
 
-Table: Outliers
+*Table: Outliers*
+
+! [] (images/Screen Shot 2023-12-07 at 10.33.24 AM.png) {width="1404"}
 
 The data tells us that Minnesota was the only state that saw a significant increase in obesity as it relates to the increase in population.
 
