@@ -116,11 +116,11 @@ Observing the graph, it's evident that Colorado and the District of Columbia mai
 _Graph here_
 Examining the graph, it's apparent that each state has sustained a relatively steady population size from 2015 to 2022. Notably, the states with the lowest obesity rates exhibit an inverse relationship in terms of population size: Colorado consistently holds the highest population, while the District of Columbia consistently has the lowest. Conversely, states with higher obesity rates tend to fall between these two extremes, with the exception of Louisiana, which maintains a relatively high population size.
 
-Question 3: 
+Question 3:
 
-_Table Here _
-The data tells us that Minnesota was the only state that saw a significant increase in obesity as it relates to the increase in population. 
+Table: Outliers
 
+The data tells us that Minnesota was the only state that saw a significant increase in obesity as it relates to the increase in population.
 
 Question 4:
 
