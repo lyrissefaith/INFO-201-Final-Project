@@ -8,20 +8,6 @@ library(tidyverse)
 ```
 # Final Project (Population vs. Obesity by State)
 
-## Intro
-### Orignial Questions: 
-### 1. What is the highest and lowest obesity state in 2015. How did that progress to 2022?
-
-
-### 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
-
-
-### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
-
-
-### 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size?
-
-
 ## Data cleaning
 
 
