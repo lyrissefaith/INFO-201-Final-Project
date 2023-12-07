@@ -181,7 +181,6 @@ ggplot(merge_high_low, aes(Year, Population, col = Area)) +
 
 
 ## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
-#### I'm not sure if this is right because when I do it in another way where I graph outliers, there are no outliers. But when I write the code in this way it shows two states that have outling results. The graph is a straight line slope though, so I don't know if it has no outliers? Might have to re-do after looking at question 2? 
 
 ```{r}
 # Changes in obesity rates for each state
@@ -200,11 +199,12 @@ obesity_outliers <- obesity_changes %>%
 
 # Merged the population changes with obesity outliers
 population_vs_obesity_outliers <- inner_join(population_changes, obesity_outliers, by = "Area")
-population_vs_obesity_outliers
 ```
+|     Area | Population Change | Obesity Change |
+|  -------- | :------: | :----:   |
+|Minnesota  |   235152   |  8.5    |
 
 The state with a significant changes in obesity rates is Minnesota. 
-
 Minnesota saw a big growth in population from 2015 to 2022 resulting in a big increase in obesity rate. 
 Increase in population often result in a increase in obesity rate. 
 
