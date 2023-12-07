@@ -118,41 +118,118 @@ _Table Here _
 The data tells us that Minnesota was the only state that saw a significant increase in obesity as it relates to the increase in population. 
 
 
-Question 4: 
+Question 4:
 
-_Table Here (Top 5 obesity gr)_
-```{r}
-![image](https://github.com/lyrissefaith/INFO-201-Final-Project/assets/151692588/b62373c8-656e-48b5-8bf9-7cfa1bfb4a6a)
-```
-Looking at this table, we can see that Minnesota has the highest obesity growth rate through 2015-2022, with a growth rate of 32.6%. Runners up are Utah (29.4%), Montana (0.28.4%), Ohio (24.8%), and Wisconsin (23.8%). 
-Table Here (Lowest 5 obesity gr)
-Looking at this table, we can see the District of Columbia has the smallest growth rate of -2.71%, giving it the only negative growth from 2015-2022 for obesity growth. Runners up are Alabama (0.562%), Illinois (0.649%), Oregon (1.33%), and Kansas (1.46%). 
+*Table:Top 5 Obesity Growth Rate*
 
-_Graph 1: Obesity Growth Rate of Highest and Lowest_
-This graph shows the visualization of the obesity percentage of the states with the highest (Minnesota) obesity growth rate and smallest (District of Columbia) obesity growth rate. From this graph we can see how steep the growth of obesity percentage is for Minnesota, comparatively, District of Columbia’s obesity drops around 2021-2022. 
+![](images/Screen Shot 2023-12-06 at 11.30.42 PM.png){width="516"}
 
-_Table here (Top 5 pop gr)_
-Looking at this table, we can see that Idaho has the highest population growth rate from 2015-2022, with an average rate of change (percentage rate) 17.4%. Runners up include Utah (13.4%), Nevada (10.8%), Florida (10.1%), and Texas (9.32%). 
+Looking at this table, we can see that Minnesota has the highest obesity
+growth rate through 2015-2022, with a growth rate of 32.6%. Runners up
+are Utah (29.4%), Montana (28.4%), Ohio (24.8%), and Wisconsin (23.8%).
 
-_Table here (Lowest 5 pop gr)_
-Here we see that West Virginia has the smallest population growth rate with a negative value of -3.63%. Runners up include Illinois (-2.15%), Mississippi (-1.62%), Louisiana (-1.59%), and Wyoming (-0.723%). 
+*Table: Lowest 5 Obesity Growth Rate*
 
-_Graph 2: Population Growth Rate of Highest and Lowest_
-This graph shows the visualization of the population of the states with the highest (Idaho) population growth rate and smallest (West Virginia) population growth rate. From this graph we can see that Idaho’s trend is very positive and steep, indicating a high growth, while West Virginia shows a strong downward trend. 
+![](images/Screen Shot 2023-12-06 at 11.34.05 PM.png){width="507"}
 
-_Graph 3: Histogram Distribution of Obesity Growth (%)_
-To cross reference, I will be using this graph to evaluate the highest/lowest population growth states. For the top five, Idaho had an obesity growth of 0.168, which is in the middle of the distribution. The runner ups place relatively high, with Utah being in one of the highest obesity growth. 
-For the lower five (pop), they all are positioned towards the lower obesity growth end of the distribution, with the highest at 0.179, which is in the middle. 
+Looking at this table, we can see the District of Columbia has the
+smallest growth rate of -2.71%, giving it the only negative growth from
+2015-2022 for obesity growth. Runners up are Alabama (0.562%), Illinois
+(0.649%), Oregon (1.33%), and Kansas (1.46%).
 
-_Graph 4: Histogram Distribution of Population Growth (%)_
-To cross reference, I will be using this graph to evaluate the highest/lowest obesity growth states and their population growth rate. For the top five, Minnesota had a population growth of 0.0429, which is in the middle of the distribution, also having one of the more common population growth rates. The runner ups places are mixed with Utah and Montana placing relatively high, and Ohio and Wisconsin placing towards the lower middle. 
-For the lower five (obesity), they all are positioned towards the lower end of the population growth rate distribution. 
+*Graph 1: Obesity Growth Rate of Highest and Lowest*:
 
-_Graph 5: Comparison of Obesity growth of the states with highest/lowest obesity growth with the states with highest/lowest population growth_
-Looking at this graph, we can see the Idaho (highest pop growth rate) and Minnesota (highest obesity growth rate) have similar growths, with the obesity percentage value actually being very similar as well. We also see that West Virginia has the lowest population growth, however has the highest Obesity percentage values overall.  
+![](images/Screen Shot 2023-12-06 at 11.32.55 PM.png){width="425"}
 
-_Graph 6: Comparison of Population growth of the states with highest/lowest population growth with the states with highest/lowest obesity growth_
-Looking at this graph, we can see that Idaho and West Virginia both have similar population values through the years, and intersecting around 2019, however West Virginia has a negative trend. Minnesota, with the highest obesity rate has the highest population values of the four states, despite having a lower pop rate of change than Idaho. 
+This graph shows the visualization of the obesity percentage of the
+states with the highest (Minnesota) obesity growth rate and smallest
+(District of Columbia) obesity growth rate. From this graph we can see
+how steep the growth of obesity percentage is for Minnesota,
+comparatively, District of Columbia's obesity drops around 2021-2022.
+
+*Table: Top 5 Population Growth*
+
+![](images/Screen Shot 2023-12-06 at 11.35.16 PM.png){width="516"}
+
+Looking at this table, we can see that Idaho has the highest population
+growth rate from 2015-2022, with an average rate of change (percentage
+rate) 17.4%. Runners up include Utah (13.4%), Nevada (10.8%), Florida
+(10.1%), and Texas (9.32%).
+
+*Table: Lowest 5 Population Growth*
+
+![](images/Screen Shot 2023-12-06 at 11.35.57 PM.png){width="510"}
+
+Here we see that West Virginia has the smallest population growth rate
+with a negative value of -3.63%. Runners up include Illinois (-2.15%),
+Mississippi (-1.62%), Louisiana (-1.59%), and Wyoming (-0.723%).
+
+*Graph 2: Population Growth Rate of Highest and Lowest*:
+
+![](images/Screen Shot 2023-12-06 at 11.36.34 PM.png){width="411"}
+
+This graph shows the visualization of the population of the states with
+the highest (Idaho) population growth rate and smallest (West Virginia)
+population growth rate. From this graph we can see that Idaho's trend is
+very positive and steep, indicating a high growth, while West Virginia
+shows a strong downward trend.
+
+*Graph 3: Histogram Distribution of Obesity Growth (%)*:
+
+![](images/Screen Shot 2023-12-06 at 11.37.01 PM.png){width="498"}
+
+To cross reference, I will be using this graph to evaluate the
+highest/lowest population growth states. For the top five, Idaho had an
+obesity growth of 0.168, which is in the middle of the distribution. The
+runner ups place relatively high, with Utah being in one of the highest
+obesity growth. For the lower five (pop), they all are positioned
+towards the lower obesity growth end of the distribution, with the
+highest at 0.179, which is in the middle.
+
+*Graph 4: Histogram Distribution of Population Growth (%)*:
+
+![](images/Screen Shot 2023-12-06 at 11.37.21 PM.png){width="486"}
+
+To cross reference, I will be using this graph to evaluate the
+highest/lowest obesity growth states and their population growth rate.
+For the top five, Minnesota had a population growth of 0.0429, which is
+in the middle of the distribution, also having one of the more common
+population growth rates. The runner ups places are mixed with Utah and
+Montana placing relatively high, and Ohio and Wisconsin placing towards
+the lower middle. For the lower five (obesity), they all are positioned
+towards the lower end of the population growth rate distribution.
+
+*Graph 5: Comparison of Obesity growth of the states with highest/lowest
+obesity growth with the states with highest/lowest population growth*:
+
+![](images/Screen Shot 2023-12-06 at 11.38.04 PM.png){width="478"}
+
+Looking at this graph, we can see the Idaho (highest pop growth rate)
+and Minnesota (highest obesity growth rate) have similar growths, with
+the obesity percentage value actually being very similar as well. We
+also see that West Virginia has the lowest population growth, however
+has the highest Obesity percentage values overall.
+
+*Graph 6: Comparison of Population growth of the states with
+highest/lowest population growth with the states with highest/lowest
+obesity growth*
+
+![](images/Screen Shot 2023-12-06 at 11.41.16 PM.png){width="398"}
+
+Looking at this graph, we can see that Idaho and West Virginia both have
+similar population values through the years, and intersecting around
+2019, however West Virginia has a negative trend. Minnesota, with the
+highest obesity rate has the highest population values of the four
+states, despite having a lower pop rate of change than Idaho.
+
+*Graph 7: Relationship Between Obesity and Population Growth Rates*
+
+![](images/Screen Shot 2023-12-06 at 12.47.03 AM.png){width="452"}
+
+Looking at this graph, we can see that there is a weak positive upward
+trend between obesity and population growth rate, as obesity growth rate
+increases, the population growth rate is sort of likely to be higher as
+well.
 
 **5. Discuss your findings**
 5a)
