@@ -1,0 +1,16 @@
+---
+title: "DataDocumentation"
+output: html_document
+date: "2023-12-07"
+---
+
+Once you have created your final “clean” dataset, you will need to create transparent and accessible documentation about your dataset. This document should be enough for someone to begin using your dataset for their own work.
+
+The documentation should include:
+
+(3 points) What are the original data sources (including web links or other pointers to the original material)
+(3 points) Explanation of all variables you include here.
+(3 points) Basic summary statistics: number of rows, column, and number of missing/otherwise invalid values by each column
+You may add other helpful details, e.g. figures or tables, to the documentation.
+
+If you do not know some of the answers, the state it clearly: e.g. “The original data collector is unknown”. There should not be too many unknowns though. And you should know everything that you can compute from data, such as the number of missings.
