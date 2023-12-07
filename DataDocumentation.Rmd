@@ -122,7 +122,7 @@ Question 4:
 
 _Table Here (Top 5 obesity gr)_
 ```{r}
-![image] <img width="525" alt="TopFiveOB" src="https://github.com/lyrissefaith/INFO-201-Final-Project/assets/151692588/b62373c8-656e-48b5-8bf9-7cfa1bfb4a6a">
+![image](https://github.com/lyrissefaith/INFO-201-Final-Project/assets/151692588/b62373c8-656e-48b5-8bf9-7cfa1bfb4a6a)
 ```
 Looking at this table, we can see that Minnesota has the highest obesity growth rate through 2015-2022, with a growth rate of 32.6%. Runners up are Utah (29.4%), Montana (0.28.4%), Ohio (24.8%), and Wisconsin (23.8%). 
 Table Here (Lowest 5 obesity gr)
