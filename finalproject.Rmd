@@ -219,6 +219,8 @@ low <- finalMerge %>%
 |West Virginia|   2021   |   40.6   |
 |West Virginia|   2022   |   41.6   |
 
+Looking at this table we can see that Mississippi, and West Virginia consistently appear among the states with the highest obesity rates. Mississippi experienced a substantial increase from 37.3% in 2016 to a peak of 40.8% in 2019, showcasing a notable upward trend. West Virginia's obesity rates also exhibited a persistent rise, reaching a peak of 41.6% in 2022.
+
 **Lowest obesity percentage per year:**
 
 |     State | Year | Obesity Rate |
@@ -233,6 +235,11 @@ low <- finalMerge %>%
 |District of Columbia|   2021   |   24.7   |
 |District of Columbia|   2022   |   21.5   |
 
+In this table, Colorado consistently stands out as the state with the lowest obesity rates across the specified years. The District of Columbia also consistently maintains relatively low obesity rates, showcasing a stable pattern. While Colorado's rates show slight fluctuations, the District of Columbia experienced a notable decrease from 24.7% in 2021 to 21.5% in 2022. It is also interesting to note that Colorado and the District of Columbia are the only states that make up this table. 
+Upon comparing these two tables, it becomes evident that the contrast between the highest and lowest obesity rates is a minimum of 20%.
+Lets visualize this:
+
+
 ```{r, echo=FALSE}
 merge_high_low <- full_join(high, low, by = join_by(Area, Year, Population, Obesity))
 
@@ -241,6 +248,9 @@ ggplot(merge_high_low, aes(Year, Obesity, col = Area)) +
   geom_line() +
   labs(title = "High VS Low Obesity Rates ", x="Years", y="Obesity Rates")
 ```
+
+Observing the graph, it's evident that Colorado and the District of Columbia maintain relatively stable obesity rates from 2016 to 2020. In contrast, Mississippi and West Virginia consistently experience increasing rates, except for a singular peak in Louisiana in 2015. This suggests a trend where states with higher initial obesity rates are prone to ongoing increases, while states with lower initial rates tend to sustain a consistent level or even decrease. 
+
 ```{r, echo=FALSE}
 ggplot(merge_high_low, aes(Year, Population, col = Area)) +
   geom_point() + 
@@ -248,6 +258,7 @@ ggplot(merge_high_low, aes(Year, Population, col = Area)) +
   labs(title = "Population Growth", x="Years", y="Population")
 
 ```
+Examining the graph, it's apparent that each state has sustained a relatively steady population size from 2015 to 2022. Notably, the states with the lowest obesity rates exhibit an inverse relationship in terms of population size: Colorado consistently holds the highest population, while the District of Columbia consistently has the lowest. Conversely, states with higher obesity rates tend to fall between these two extremes, with the exception of Louisiana, which maintains a relatively high population size.
 
 
 ## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
