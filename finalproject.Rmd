@@ -363,6 +363,7 @@ growthCompare %>%
 
 summaryDf <- growthCompare %>%
   select(Area, ob_growth, pop_growth, biggerOb)
+summaryDf
 
 ```
 #### Graph 7: Relationship Between Obesity and Population Growth Rates (%)
