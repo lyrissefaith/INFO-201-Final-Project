@@ -30,7 +30,9 @@ We found our population data from the United States Census Bureau website. The t
 
 2c) For obesity data, the State of Childhood Obesity, sponsored by the Robert Wood Johnson Foundation, collected the data from the Behavioral Risk Factor Surveillance System (BRFSS) data, collected by the Centers for Disease Control and Prevention (aka. CDC).  
 Both population data was gathered and compiled by the US Census Bureau. US Census Bureau collects data through a variety of surveys, such as the decennial census (conducted every 10 years) and other regular surveys like the American Community Survey (ACS), Economic Census, and others.  
+
 2d) All of our data is publicly available and anyone can access it. The State of Childhood Obesity site has clearly organized the BRFSS data into a readable, easy to understand format. The US Census Bureau also has publicly posted the data into multiple formats so that it could be easily used by data analysis. 
+
 2e) The population data for the years 2010 - 2019 is about state population totals from 2010 - 2019. It includes the population, population change, estimated components of population change from April, 2010 - July 1, 2019. The population data for years 2020 - 2022 contains similar information. The dataset is about state population totals and component change in years 2020 - 2022. Both data sets tell us the population for each State of the United States. 
 The adult obesity data shows the percentage of the state by population that are considered obese from the years 2015 (and some earlier), up to 2022. The site which the dataset came from also has other measurable factors such as demographic, adult and child, as well as comprehensive overview and fun facts pertaining to obesity per state. Some include different age ranges. We use the adult obesity dataset.
 
@@ -41,7 +43,9 @@ Our final dataset merge these two datasets, population and obesity together. We 
 2g) In our final dataset, _finalData_,  each row corresponds to a U.S. state, providing information on its population size or obesity rate, with data categorized by type, “Obesity” or “Population” for the years spanning from 2015 to 2022. Additionally with an additional column of growth/rate of change (percentage change) of obesity and population for years between 2015-2022. Our final summarizing data frame is called _summaryDf_. 
 
 2h) Following the processes of data cleaning and merging, we now have a cumulative total of 416 observations. Within the final dataset, there are a total of 104 rows, and 11 columns. This is a total of 1,144 observations/values.
+
 2i) The relevant variables are Area, type, years 2015-2022, and the growth/rate of change columns. They are coded as their own columns, with values in each year and are classified by the type column, which indicates if the value is correlated to obesity or population data. 
+
 2j) Puerto Rico has missing obesity percentage values for years 2016-2022, making it a total of 7 missing values. 
 
 
@@ -230,6 +234,7 @@ Looking at this graph, we can see that there is a weak positive upward
 trend between obesity and population growth rate, as obesity growth rate
 increases, the population growth rate is sort of likely to be higher as
 well.
+
 
 **5. Discuss your findings**
 5a)
