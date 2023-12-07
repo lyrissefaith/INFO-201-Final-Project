@@ -3,77 +3,148 @@ title: "finalproject"
 output: html_document
 date: "2023-11-30"
 ---
-```{r}
+```{r, echo = FALSE}
 library(tidyverse)
 ```
 # Final Project (Population vs. Obesity by State)
 
-## Intro
-### Orignial Questions: 
-### 1. What is the highest and lowest obesity state in 2015. How did that progress to 2022?
+**1. Introduction**
+1a) We are looking at the percentage of a state that is considered obese, to evaluate the correlation of obesity and population size. We know that America is viewed as more obese compared to foreign counterparts, and we know that some states have higher populations. We are interested to see if states with higher populations, or political positions affect obesity numbers. We want to view the connection between obesity numbers and population numbers to put it into perspective.
+We are creating a dataset that combines the obesity percentage per state and the population data in that state to find patterns and trends between the size of the population and how obese they are in the USA. We also will use this data to look at the regions that contain a more obese population. Does the location of the state correlate with the percentage of the population that is obese?
+
+1b) From the World Health Organization, we know that obesity numbers are only growing, practically tripling! This organization points out that no longer are upper income areas the only ones struggling with obesity. Lower and middle class areas are also struggling to keep obesity numbers low. More people are dying from being overweight than malnutrition which is completely preventable. World health even mentions that urban areas are struggling the most with obesity, which is something we hope to learn more about based on region and population size with our data. There are numerous diseases that are more prevalent due to obesity. If we can take a look at these numbers, focus on area hotspots, and raise awareness then we have a chance to keep population numbers high and obese deaths low. 
+	We know that America is viewed as more obese compared to foreign counterparts, and we know that some states have higher populations. We are interested to see if states with higher populations affect obesity numbers. We want to add the connection between obesity numbers and population numbers to put it all into perspective.
+
+1c) We would like to focus in on 4 main questions to be answered: 
+What is the highest and lowest obesity state in 2015? How did that progress to 2022?
+Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
+Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
+Are there any states where obesity has been increasing or decreasing at a faster rate? compare it to changes in population size?
+
+1d) Obesity can lead to other health problems such as chronic diseases. Knowing what areas have higher obesity rates can help with narrowing down target intervention for health professionals or public workers. Answering our questions is interesting because knowing how population sizes relate to obesity offers insights into societal impact. It can help healthcare systems and later on increase productivity. Also, identifying patterns across states assists in customizing interventions for specific regions, effectively tackling disparities. Learning the changes of obesity alongside population dynamics provides foresight into forthcoming health concerns, steering proactive strategies. Overall, the results we find should serve as a tool for policymakers, aiding resource distribution and shaping effective public health strategies.
 
 
-### 2. What is the state with the highest obesity percentage, and how does its population compare to other states with lower obesity rates? Is there a relationship between high obesity and a larger or smaller population?
+**2. Explain your Data**
+2a) We use these datasets due to their comprehensive nature and credibility. It has all the data we want as it includes obesity rates for each state over the years and also has the population divided for each state over the years. 
+These datasets also come from credible sources, who collected the data for the purpose of showing the percentage of obesity per state, as well as the population of a state for future purposes. 
+Basic summary statistics of final dataset (finalData): 104 rows, 11 columns, 8 total NA values for Puerto Rico (population value 2016-2022, growth_poc). 
+
+2b) We found our obesity data from Data.gov, as well as the State of Childhood Obesity site, which pulls data from the same census as the data from Data.gov (https://stateofchildhoodobesity.org/demographic-data/adult/). Both obesity data originate from the data collected by the Behavioral Risk Factor Surveillance System (BRFSS) data, from the CDC. 
+We found our population data from the United States Census Bureau website. The two data sets are from  (https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html) and (https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html).
+
+2c) For obesity data, the State of Childhood Obesity, sponsored by the Robert Wood Johnson Foundation, collected the data from the Behavioral Risk Factor Surveillance System (BRFSS) data, collected by the Centers for Disease Control and Prevention (aka. CDC).  
+Both population data was gathered and compiled by the US Census Bureau. US Census Bureau collects data through a variety of surveys, such as the decennial census (conducted every 10 years) and other regular surveys like the American Community Survey (ACS), Economic Census, and others.  
+
+2d) All of our data is publicly available and anyone can access it. The State of Childhood Obesity site has clearly organized the BRFSS data into a readable, easy to understand format. The US Census Bureau also has publicly posted the data into multiple formats so that it could be easily used by data analysis. 
+
+2e) The population data for the years 2010 - 2019 is about state population totals from 2010 - 2019. It includes the population, population change, estimated components of population change from April, 2010 - July 1, 2019. The population data for years 2020 - 2022 contains similar information. The dataset is about state population totals and component change in years 2020 - 2022. Both data sets tell us the population for each State of the United States. 
+The adult obesity data shows the percentage of the state by population that are considered obese from the years 2015 (and some earlier), up to 2022. The site which the dataset came from also has other measurable factors such as demographic, adult and child, as well as comprehensive overview and fun facts pertaining to obesity per state. Some include different age ranges. We use the adult obesity dataset.
+
+2f) For the obesity data, we encountered some missing data, for example the obesity data for Puerto Rico, as for some data collection, Puerto Rico is not considered a state of the U.S., but a territory, and treated as different in some datasets.  
+For the population data, we could not find one where it had years from 2015 - 2022 all in one data. Therefore, we had to use two separate population data, one that includes population of years 2010 - 2019 and one for the years 2020 - 2022. 
+Our final dataset merge these two datasets, population and obesity together. We first merged the two population data sets (2010-2019 and 2020-2022) and cleaned. Then we merged the obesity and population data using the connector “Area” which is the state name. Only data quality issue was the missing obesity values for Puerto Rico. 
+
+2g) In our final dataset, _finalData_,  each row corresponds to a U.S. state, providing information on its population size or obesity rate, with data categorized by type, “Obesity” or “Population” for the years spanning from 2015 to 2022. Additionally with an additional column of growth/rate of change (percentage change) of obesity and population for years between 2015-2022. Our final summarizing data frame is called _summaryDf_. 
+
+2h) Following the processes of data cleaning and merging, we now have a cumulative total of 1,144 observations. Within the final dataset, there are a total of 104 rows, and 11 columns. 
+
+2i) The relevant variables are Area, type, years 2015-2022, and the growth/rate of change columns. They are coded as their own columns, with values in each year and are classified by the _type_ column, which indicates if the value is correlated to obesity or population data. 
+
+2j) There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
 
 
-### 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
+**3. Discuss your methods**
+3a)
+Question 1: 
+In order to tackle a trend heavy question, we started by searching the data for the states with the highest and lowest obesity percentages. Since the data we are working from reflects self reported obesity percentages, we knew that the states were aware of their obesity percentage. We focused on implementing data including the variables “Area”, “Year”, and “Obesity”. We were interested in finding how, in knowing whether they had a high or low obesity percentage, states were able to increase or decrease their percentage. 
 
+Question 2: 
+In addressing this specific question, we have employed all the variables at our disposal in the dataset, namely Area, Year, Population, and Obesity. The comprehensive utilization of all variables is imperative for our analysis, as our objective is to assess the states with the highest and lowest obesity rates each year. Subsequently, we aim to leverage these findings to examine the population dynamics of each state during those specific years.
 
-### 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size?
+Question 3: 
+In answering this question, we first analyzed the changes in obesity rates and population. To do this we calculated changes in obesity rates for each state (obesity_changes) by subtracting the first recorded obesity rate from the last recorded rate. Then, we determined changes in population for each state (population_changes) by subtracting the first recorded population from the last recorded population. Using this we then identify any outliers in obesity rate changes by detecting outliers in obesity rate changes using a threshold of absolute scaled difference greater than 2 standard deviations (obesity_outliers). Finally, to compare between population changes and obesity outliers we used an inner join (inner_join) between population changes and obesity outliers to identify states with significant changes in obesity rates compared to their population changes. 
+
+Question 4: 
+For this specific question, I utilized multiple variables and forms of our data, transforming it into wide and long forms, and selecting variables targeted to specific aspects of the question. I employed variables such as Year (specifically 2022 and 2015), Obesity, Population, and Area. I additionally created two-three additional columns, “type” and “ob_growth” and “pop_growth”, these two which can be found in the “growth_roc” column in our final df “finalData.” I found the states which have the highest and lowest rate of change in obesity and population separately using these variables and arranging them (desc()), to see if there was a correlation between high obesity rates of change and high population rates of change. 
+I utilized the tools such as ggolot to plot the relationship and visualize the highest/lowest rates of change for obesity and population. 
+
+3b)
+Question 1: 
+In order to tackle the first question, we started by processing obesity data for the year 2015 and analyzing trends in obesity percentages for the years 2015 to 2022. We used dollar notation to access information and extract data for the year 2015 from the “finalMerge” dataset. We then used that data to find the states with the highest and lowest obesity percentage in 2015 utilizing the min() and max() feature. In order to find the annual trends from 2015 to 2022, we defined a function to calculate annual changes in obesity percentages, and then applied it to data for the states with the highest and lowest obesity. In order to provide accurate visualization to discuss the results, we created a graph, plotting the Obesity percentages from the states of Louisiana and Colorado and provided a trend line of their average increase/decrease throughout the years. This was to show us how the states responded to knowing their obesity percentages, and reflect whether there was improvement. 
+
+Question 2: 
+We initiate the process by identifying states with the highest obesity rates each year. Using the "finalmerge" dataset grouped by the "Year" variable, we employ the slice_max function to extract the row with the maximum value in the "Obesity" variable for each year. This step pinpoints the state with the highest obesity rate annually. After removing the grouping with the ungroup function, we store this information in a new dataframe named "high." Replicating this process, we also identify states with the lowest obesity rates each year, saved as the "low" dataframe. To facilitate a comprehensive comparison between the highest and lowest obesity rates and their correlation with population size, we merge these datasets using full_join based on common variables (Area, Year, Population, and Obesity), resulting in the "merge_high_low" dataset. Subsequently, through ggplot code blocks, we create visualizations, including a scatter plot and line chart, to depict obesity rates and population growth over the years. These visualizations, differentiating states by color, offer insights into the dynamics between high and low obesity rates and population changes. The comparison of these graphs allows for a deeper exploration of potential correlations between obesity rates and population sizes.
+
+Question 3:
+For this question we start the process by calculating obesity rate changes. We calculated changes in obesity rates for each state (variable: obesity_changes): Grouped the merged dataset (finalMerge) by "Area" (state) to compute the difference between the last recorded obesity rate and the first recorded obesity rate for each state. Then we calculated population changes: Calculated changes in population for each state (variable: population_changes): Grouped the merged dataset (finalMerge) by "Area" to calculate the difference between the last recorded population and the first recorded population for each state. Next, we identified obesity outliers:  Detected potential outliers in obesity rate changes (variable: obesity_outliers): Identified states where the absolute scaled change in obesity rates was greater than 2 standard deviations from the mean change. Finally, we compared population changes with obesity outliers: Merged the population changes with the identified obesity outliers (variable: population_vs_obesity_outliers): Performed an inner join between the population changes and obesity outliers by the common key "Area" to explore potential associations between significant obesity rate changes and corresponding population changes.
+
+Question 4: 
+We initiate the process by transforming our finalMerge df to longer in order to add the classification of type to be able to group the data by “type” into a df called mergeLong. We then transform this df into a wider format to assign each year into its own column, into a df called mergeWide. Using this new df, I create separate df for obesity and population data in order to more easily manipulate the data to create our additional columns. I created a new df called mutateWide to create a df with just Area, years 2015 and 2022, and our new calculated ob_growth and pop_growth columns. To find the obesity and population growth by percentage growth, I take the value in 2022 and subtract the value in 2015 and divide by the 2015 value for each classification and each Area (state), removing NA values. Find the highest and lowest values of each obesity growth and population growth by arranging by arrange(desc()) function, and head() and tail() functions. 
+For plotting, I create six total graphs to visualize the relationships between the growths and compare them. Utilizing ggplot I create a line graph with a trend line to visualize the highest/lowest obesity rate of change, as well as the highest/lowest population rate of change. To see if there is a relationship between the rates of change of obesity and population, I print the top and lowest 5 states for growth for both classifications. When I could not find the same names in each, I created a histogram to see the frequency and distribution of obesity and population growth. Using this, I can compare the other growth (obesity or population) of the highest/lowest growth states to see where their other growth lands on the distribution graph. The last two line graphs are comparing the obesity and population growths of the opposite highest and lowest states to see how they compare. 
+
+3c)
+Question 1: 
+We chose to focus on recent years, 2015-2022. We figured our findings would be most beneficial to our target audience, the common public, if it was relevant. We hope our data will help those looking to find where they want to live and any other geographic decisions they might have.
+
+Question 2: 
+Our sample selection was centered on the timeframe spanning 2015 to 2022. This deliberate choice aimed to ensure our focus on pertinent and recent periods, enabling us to discuss results that remain relevant to our current context.
+
+Question 3: 
+NA
+
+Question 4: 
+Our sample selection was centered on the timeframe of years 2015-2022. We chose this sample as we wanted to see trends across the years, however, still relevant data to present. To find the growth, we should have a substantial span of time of go over. 
+
+3d) Missing Values?
+We overall did not need to remove values to attain our goals. 
+3e)
+NA. The only statistical methods we used were simple math and formulas. 
+
 
 
 ## Data cleaning
-
-
 ### Read in our data and clean population data for 2010-2019
-
-```{r}
+```{r, echo = FALSE}
 pop_2010_2019 <- read_delim("../Data/pop_2010_2019.csv")
 short_pop_10_19 <- subset(pop_2010_2019, select = c("Area", "2015", "2016", "2017", "2018", "2019"))
 ```
 
 ### Read in our data and clean population data for 2020-2022
-
-```{r}
+```{r, echo = FALSE}
 pop_2020_2022 <- read_delim("../Data/pop_2020_2022.csv")
 short_pop_20_22 <- subset(pop_2020_2022, select = c("NAME", "POPESTIMATE2020", "POPESTIMATE2021", "POPESTIMATE2022"))
 colnames(short_pop_20_22) <- c("Area", "2020", "2021", "2022")
 ```
 
 ### Merging population data
-
-```{r}
+```{r, echo = FALSE}
 mergedpop <- left_join(short_pop_10_19, short_pop_20_22)
 ```
 
 ### Cleaning merged population data
-
-```{r}
+```{r, echo = FALSE}
 popLong <- pivot_longer(mergedpop,
                         !c(Area),
                         names_to="Year",
                         values_to="Population") %>%
   mutate(Year = as.numeric(sub("X", "", Year)))
-head(popLong, 4)
 ```
 
 ### Read in our data and clean obesity data for 2015-2022
-
-```{r}
+```{r, echo = FALSE}
 obesity_data <- read_delim("../Data/National_Obesity_By_State.csv")
 short_obesity_data <- subset(obesity_data, select = c("NAME", "Obesity", "Year"))
 colnames(short_obesity_data) <- c("Area","Obesity", "Year")
 ```
 
 ### Merging population and obesity data
-
-```{r}
+```{r, echo = FALSE}
 finalMerge <- left_join(popLong, short_obesity_data) 
 ```
 
 ## Questions & Data
 ## 1. Are there any correlations between a state’s population size and its obesity percentage? For example, do more populous states tend to have higher or lower obesity rates?
-```{r}
+```{r, echo = FALSE}
 #Highest and lowest obesity percentage per state
 
 ob2015_data <- finalMerge[finalMerge$Year == "2015", ]
@@ -182,7 +253,7 @@ ggplot(merge_high_low, aes(Year, Population, col = Area)) +
 
 ## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
 
-```{r}
+```{r, echo = FALSE}
 obesity_changes <- finalMerge %>%
   group_by(Area) %>%
   summarize(obesity_change = last(Obesity) - first(Obesity))
