@@ -183,21 +183,17 @@ ggplot(merge_high_low, aes(Year, Population, col = Area)) +
 ## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
 
 ```{r}
-# Changes in obesity rates for each state
 obesity_changes <- finalMerge %>%
   group_by(Area) %>%
   summarize(obesity_change = last(Obesity) - first(Obesity))
 
-# Changes in population for each area 
 population_changes <- finalMerge %>%
   group_by(Area) %>%
   summarize(population_change = last(Population) - first(Population))
 
-# Outliers in obesity rate changes
 obesity_outliers <- obesity_changes %>%
   filter(abs(scale(obesity_change)) > 2)  
 
-# Merged the population changes with obesity outliers
 population_vs_obesity_outliers <- inner_join(population_changes, obesity_outliers, by = "Area")
 ```
 |     Area | Population Change | Obesity Change |
