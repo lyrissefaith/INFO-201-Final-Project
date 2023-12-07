@@ -53,7 +53,7 @@ Our final dataset merge these two datasets, population and obesity together. We 
 2j) There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
 
 
-**3. Discuss your methods**	
+**3. Discuss your methods**		
 3a)
 Question 1: 
 In order to tackle a trend heavy question, we started by searching the data for the states with the highest and lowest obesity percentages. Since the data we are working from reflects self reported obesity percentages, we knew that the states were aware of their obesity percentage. We focused on implementing data including the variables “Area”, “Year”, and “Obesity”. We were interested in finding how, in knowing whether they had a high or low obesity percentage, states were able to increase or decrease their percentage. 
