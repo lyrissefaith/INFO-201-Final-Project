@@ -8,7 +8,7 @@ library(tidyverse)
 ```
 # Final Project (Population vs. Obesity by State)
 
-**1. Introduction**	
+**1. Introduction**		
 1a) We are looking at the percentage of a state that is considered obese, to evaluate the correlation of obesity and population size. We know that America is viewed as more obese compared to foreign counterparts, and we know that some states have higher populations. We are interested to see if states with higher populations, or political positions affect obesity numbers. We want to view the connection between obesity numbers and population numbers to put it into perspective.
 We are creating a dataset that combines the obesity percentage per state and the population data in that state to find patterns and trends between the size of the population and how obese they are in the USA. We also will use this data to look at the regions that contain a more obese population. Does the location of the state correlate with the percentage of the population that is obese?
 
