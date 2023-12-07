@@ -286,7 +286,7 @@ By answering this question, we identified Minnesota as a state with a significan
 
 
 ## 4.Are there any states where obesity has been increasing or decreasing at a faster rate compared to changes in population size? Does the state with the highest/lowest obesity growth have the highest/lowest population growth as well and vice versa?
-```{r, echo=FALSE}
+```{r, echo=FALSE, results = 'hide'}
 mergeLong <- finalMerge %>%
   pivot_longer(!Area&!Year, names_to = "type", values_to = "data")
 
@@ -332,6 +332,7 @@ mergeLong %>%
   labs(x="Years", y="Obesity from 2015-2022")+
   geom_smooth(method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
 ```
+
 This graph shows the visualization of the obesity percentage of the
 states with the highest (Minnesota) obesity growth rate and smallest
 (District of Columbia) obesity growth rate. From this graph we can see
@@ -357,6 +358,7 @@ mergeLong %>%
   labs(x="Years", y="Population from 2015-2022")+
   geom_smooth(method = "lm", se = FALSE, alpha = 0.8, size = 0.2)
 ```
+
 This graph shows the visualization of the population of the states with
 the highest (Idaho) population growth rate and smallest (West Virginia)
 population growth rate. From this graph we can see that Idaho's trend is
@@ -373,6 +375,7 @@ mutateWide %>%
   ggplot(aes(ob_growth)) +
   geom_histogram(col = "gold1", fill = "green4") 
 ```
+
 To cross reference, I will be using this graph to evaluate the
 highest/lowest population growth states. For the top five, Idaho had an
 obesity growth of 0.168, which is in the middle of the distribution. The
@@ -390,6 +393,7 @@ mutateWide %>%
   ggplot(aes(pop_growth)) +
   geom_histogram(col = "gold1", fill = "red3") 
 ```
+
 To cross reference, I will be using this graph to evaluate the
 highest/lowest obesity growth states and their population growth rate.
 For the top five, Minnesota had a population growth of 0.0429, which is
@@ -427,6 +431,7 @@ mergeLong %>%
   )+
   geom_smooth(method = "lm", se = FALSE, alpha = 0.3, size = 0.5)
 ```
+
 Looking at this graph, we can see the Idaho (highest pop growth rate)
 and Minnesota (highest obesity growth rate) have similar growths, with
 the obesity percentage value actually being very similar as well. We
@@ -453,6 +458,7 @@ mergeLong %>%
   )+
   geom_smooth(method = "lm", se = FALSE, alpha = 0.5, size = 0.2)
 ```
+
 Looking at this graph, we can see that Idaho and West Virginia both have
 similar population values through the years, and intersecting around
 2019, however West Virginia has a negative trend. Minnesota, with the
@@ -489,6 +495,7 @@ ggplot(summaryDf, aes(ob_growth, pop_growth, col = Area)) +
         y = "Population Growth Rate (%)") +
   geom_smooth(mapping = aes(ob_growth, pop_growth, col = "green2"))
 ```
+
 Looking at this graph, we can see that there is a weak positive upward
 trend between obesity and population growth rate, as obesity growth rate
 increases, the population growth rate is sort of likely to be higher as
