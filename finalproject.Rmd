@@ -119,6 +119,7 @@ ggplot(plot_data, aes(x = year, y = annual_change, color = state)) +
   ) +
   theme_minimal()
 ```
+
 This data shows that on average, as the years progress, Colorado has decreased their obesity levels by 0.67 and Louisiana continues to increase there obesity percentage by around 0.2.
 
 
