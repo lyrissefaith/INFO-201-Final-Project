@@ -269,7 +269,7 @@ ggplot(merge_high_low, aes(Year, Population, col = Area)) +
 
 ```
 
-Examining the graph, it's apparent that each state has sustained a relatively steady population size from 2015 to 2022. Notably, the states with the lowest obesity rates exhibit an inverse relationship in terms of population size: Colorado consistently holds the highest population, while the District of Columbia consistently has the lowest. Conversely, states with higher obesity rates tend to fall between these two extremes, with the exception of Louisiana, which maintains a relatively high population size.
+Examining the graph, it's apparent that each state has sustained a relatively steady population size from 2015 to 2022. Notably, the states with the lowest obesity rates exhibit an inverse relationship in terms of population size: Colorado consistently holds the highest population, while the District of Columbia consistently has the lowest. Conversely, states with higher obesity rates are seen to fall between these two extremes with relatively low population sizes, with the exception of Louisiana, which has a much higher population size seen in 2015. Due to the state having the highest obesity only once, it can be hard to discern a pattern in the population of high obesity states.
 
 ## 3. Are there any significant changes in state obesity percentages over time, and how do these changes relate to changes in state populations? 
 
