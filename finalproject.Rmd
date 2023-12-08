@@ -28,8 +28,6 @@ We are creating a dataset that combines the obesity percentage per state and the
 
 Obesity is associated with various health issues, including chronic diseases. Identifying areas with higher obesity rates is crucial for targeting interventions by health professionals or public workers. Addressing our research questions is compelling as understanding the relationship between population sizes and obesity provides insights into societal impact. This knowledge can benefit healthcare systems, potentially boosting productivity over time. Additionally, recognizing patterns across states aids in tailoring interventions for specific regions, effectively addressing disparities. Studying the changes in obesity alongside population dynamics offers foresight into upcoming health concerns, guiding proactive measures.
 
-
-
 # Our Data
 We use the following datasets due to their comprehensive nature and credibility. It has all the data we want as it includes obesity rates for each state over the years and also has the population divided for each state over the years. 
 These datasets also come from credible sources, who collected the data for the purpose of showing the percentage of obesity per state, as well as the population of a state for future purposes. 
@@ -58,7 +56,6 @@ The relevant variables are Area, type, years 2015-2022, and the growth/rate of c
 
 There are a total of 8 missing values ("NA"): Puerto Rico has missing obesity percentage values for years 2016-2022 as well as the growth_pc. 
 
-
 # Methods       
 
 Question 1: 
@@ -68,7 +65,6 @@ In order to tackle a trend heavy question, we started by searching the data for 
 
 **Data Processing:**
 In order to tackle the first question, we started by processing obesity data for the year 2015 and analyzing trends in obesity percentages for the years 2015 to 2022. We used dollar notation to access information and extract data for the year 2015 from the “finalMerge” dataset. We then used that data to find the states with the highest and lowest obesity percentage in 2015 utilizing the min() and max() feature. In order to find the annual trends from 2015 to 2022, we defined a function to calculate annual changes in obesity percentages, and then applied it to data for the states with the highest and lowest obesity. In order to provide accurate visualization to discuss the results, we created a graph, plotting the Obesity percentages from the states of Louisiana and Colorado and provided a trend line of their average increase/decrease throughout the years. This was to show us how the states responded to knowing their obesity percentages, and reflect whether there was improvement.
-
 
 Question 2:
 
@@ -105,7 +101,6 @@ We overall did not need to remove values to attain our goals.
 **Statistical Methods:**
 The only statistical methods we used were simple math and formulas. 
 
-
 ```{r, echo = FALSE, message=FALSE}
 ## Data cleaning
 ### Read in our data and clean population data for 2010-2019
@@ -120,12 +115,10 @@ short_pop_20_22 <- subset(pop_2020_2022, select = c("NAME", "POPESTIMATE2020", "
 colnames(short_pop_20_22) <- c("Area", "2020", "2021", "2022")
 ```
 
-
 ```{r, echo = FALSE, message=FALSE}
 ### Merging population data
 mergedpop <- left_join(short_pop_10_19, short_pop_20_22, by = join_by(Area))
 ```
-
 
 ```{r, echo = FALSE, message=FALSE}
 ### Cleaning merged population data
@@ -135,7 +128,6 @@ popLong <- pivot_longer(mergedpop,
                         values_to="Population") %>%
   mutate(Year = as.numeric(sub("X", "", Year)))
 ```
-
 
 ```{r, echo = FALSE, message=FALSE}
 ### Read in our data and clean obesity data for 2015-2022
@@ -287,6 +279,7 @@ obesity_outliers <- obesity_changes %>%
 
 population_vs_obesity_outliers <- inner_join(population_changes, obesity_outliers, by = "Area")
 ```
+
 |     Area | Population Change | Obesity Change |
 |  -------- | :------: | :----:   |
 |Minnesota  |   235152   |  8.5    |
@@ -554,7 +547,6 @@ growth rate from 2015-2022, with an average rate of change (percentage
 rate) 17.4%. Runners up include Utah (13.4%), Nevada (10.8%), Florida
 (10.1%), and Texas (9.32%).
 
-
 **Lowest 5 population growth rate:**
 
 |     State | pop_growth | ob_growth |Obesity > Population growth | 
@@ -568,7 +560,6 @@ rate) 17.4%. Runners up include Utah (13.4%), Nevada (10.8%), Florida
 Here we see that West Virginia has the smallest population growth rate
 with a negative value of -3.63%. Runners up include Illinois (-2.15%),
 Mississippi (-1.62%), Louisiana (-1.59%), and Wyoming (-0.723%).
-
 
 **Total Overview of Obesity GR > Population GR:**
 
@@ -602,7 +593,6 @@ From my graphs 5-6, we can see that despite having a higher growth rate, some st
 Referring to the tables in question 2, West Virginia ties with Mississippi for highest obesity percentage value the most across the 8 years, topping 4 times. Also, for lowest obesity percentage per year, Colorado has the highest count at 6 years, while District of Columbia tops 3 years. Despite West Virginia having the highest obesity percentage per year the most, it does not make the top 5 obesity growth rate by percentage rate, but does have the lowest population growth rate by percentage rate. However, the District of Columbia appears to have the lowest obesity rate by percentage rate across the 8 years. 
 For an overall summary, 43 states have obesity growth rates greater than their population growth rate, which we can conclude that more of their population, even standardized, are becoming more obese. 	
 
-
 **Limitations:**
 Because the obesity rates among different States over the years were so close to each other, it was hard to find clear trends. Therefore, it was hard for us to make claims within our story. For example, Colorado had highest population and lowest obesity and District of Columbia had lowest population and second lowest obesity
 
@@ -613,4 +603,4 @@ After analyzing the data, we noticed that high obesity rates in states are const
 Our key takeaway from analyzing the data we found is that we did not find any clear trend between high obesity with high population rates, but we did find that states with higher obesity percentage values were found among those states with lower population growth by percentage rate. 
 When discovering trends among the states with the highest obesity percentage, we found that throughout the years of 2015 and 2022, Louisiana continued to rise in their obesity rates. If we could dive deeper, we would try to find the habits or actions that may contribute to this rise, however we did find that their population size was not a factor. Colorado was the lowest state in terms of obesity percentages, and continued to decrease their rates, on average, throughout the years.
 When comparing the growth rate (percentage rate) of obesity and population, we found a slight upward trend where higher obesity growth rates can slightly be attributed with higher population growth rates using percentage rate. 
-We also found that of the 51 states (including the District of Columbia), 43 have obesity growth rates (percentage rate) higher than population growth rates (percentage rate), indicating that increased people and populations of states are becoming obese faster than the population can grow.  
+We also found that of the 51 states (including the District of Columbia), 43 have obesity growth rates (percentage rate) higher than population growth rates (percentage rate), indicating that increased people and populations of states are becoming obese faster than the population can grow. 
